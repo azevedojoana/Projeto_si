@@ -199,6 +199,10 @@
 
             pg_query($conn, "insert into User_ (username, password) values('$username', '$password')");
 
+
+
+
+
         }
 
         ?>
