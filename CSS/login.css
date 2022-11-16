@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EAE4E1;
+    font-family: "Franklin Gothic Heavy", sans-serif;
+}
+
+header{
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    display:flex;
+    top:0;
+    left:0;
+    background: #E26934;
+    opacity:0.9;
+    font-family: "Franklin Gothic Demi", sans-serif;
+    font-weight: normal;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    padding: 0;
+    margin: 0;
+}
+
+#logo{
+    width:auto;
+    height:70px;
+}
+
+main{
+    transform: scale(0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+}
