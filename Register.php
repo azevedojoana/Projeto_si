@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,7 +190,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         pg_query($conn, "insert into User_ (username, password) values('$username', '$password')" );
         session_start();
         $_SESSION['nome'] = $username;
-        header("Location: /Register.php/Homepage.php");
+        header("Location: Login.php");
     }
 }
 
@@ -218,7 +226,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         <!--Botões-->
 
         <div class="botao_register"><img src="Icones%20Rockstar%20Inc/Register/botao%20register2.png" height="73" width="auto" alt="img" onclick="javascript:document.getElementById('form_register').submit()" ></div>
-        <div class="botao_login"><a href="Login.html"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="70" width="auto" alt="img"></a></div>
+        <div class="botao_login"><a href="Login.php"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="70" width="auto" alt="img"></a></div>
         <div class="botao_listener"><img src="Icones%20Rockstar%20Inc/Register/botao%20listener.png" height="77" width="auto" alt="img"></div>
         <div class="botao_artist"><img src="Icones%20Rockstar%20Inc/Register/botao%20artist.png" height="77" width="auto" alt="img"></div>
     </div>

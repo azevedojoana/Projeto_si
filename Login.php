@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,34 +154,61 @@
 
 </head>
 <body>
+
+<?php
+
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $username= $_POST['username'];
+    $password= $_POST['password'];
+
+    $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
+    $conn= pg_connect($str) or die ("Erro na ligacao");
+
+    $user= pg_query($conn, "select * from User_ where username = '$username'" );
+    if(pg_fetch_array($user)!=false){
+        pg_query($conn, "insert into User_ (username, password) values('$username', '$password')" );
+        session_start();
+        $_SESSION['nome'] = $username;
+        header("Location: Homepage.php");
+    }else{
+        print "<script>alert('Esse username já está a ser utilizado, por favor escolha outro');</script>";
+    }
+}
+
+?>
+
 <header>
     <!-- Logo -->
     <img id=logo src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
 </header>
 
 <main>
-<div class="container">
+    <div class="container">
 
-    <div class="caixa"></div>
+        <div class="caixa"></div>
 
-    <h1 class="login" >Login</h1>
+        <h1 class="login" >Login</h1>
 
-    <!--Caixas de texto-->
+        <!--Caixas de texto-->
 
-    <input type="text" required placeholder="" class="username">
-    <input type="password" required placeholder="" class="password">
+        <form id="form_login" method="post" action="">
 
-    <!--Texto-->
+        <input type="text" name="username" required placeholder="" class="username">
+        <input type="password" name="password" required placeholder="" class="password">
 
-    <div class="texto_password">Password:</div>
-    <div class="texto_username">Username:</div>
+        </form>
 
-    <!--Botões-->
+        <!--Texto-->
 
-    <div class="botao_register"><a href="Register.php"><img src="Icones%20Rockstar%20Inc/Login/botao%20register.png" height="auto" width="179" alt="img"></a></div>
-    <div class="botao_login"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="auto" width="197" alt="img"></div>
+        <div class="texto_password">Password:</div>
+        <div class="texto_username">Username:</div>
 
-</div>
+        <!--Botões-->
+
+        <div class="botao_register"><a href="Register.php"><img src="Icones%20Rockstar%20Inc/Login/botao%20register.png" height="auto" width="179" alt="img"></a></div>
+        <div class="botao_login"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="auto" width="197" alt="img" onclick="javascript:document.getElementById('form_login').submit()" ></div>
+
+    </div>
 </main>
 </body>
 </html>

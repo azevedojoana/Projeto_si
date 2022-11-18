@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,7 +165,7 @@
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="Homepage.html"><h4>Username</h4></a>
+            <a href="Homepage.php"><h4>Username</h4></a>
         </div>
 
         <div >
@@ -166,47 +174,47 @@
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
             <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
         </div>
     </div>
 </header>
 <main>
-<div class="container">
+    <div class="container">
 
-    <div class="caixa"></div>
-    <!--Caixas de texto-->
+        <div class="caixa"></div>
+        <!--Caixas de texto-->
 
-    <input required type="text" placeholder="" class="song_name">
-    <input required type="text" placeholder="" class="song_genre">
+        <input required type="text" placeholder="" class="song_name">
+        <input required type="text" placeholder="" class="song_genre">
 
-    <!--Texto-->
+        <!--Texto-->
 
 
-    <div class="texto_song_name">Song Name:</div>
-    <div class="texto_song_genre">Song Genre:</div>
-    <div class="upload_song">Upload Song:</div>
+        <div class="texto_song_name">Song Name:</div>
+        <div class="texto_song_genre">Song Genre:</div>
+        <div class="upload_song">Upload Song:</div>
 
-    <!--Add File-->
+        <!--Add File-->
 
-    <div class="add_file"><img src="Icones%20Rockstar%20Inc/upload%20album/add%20file.png" height="38" width="auto" alt="img"></div>
+        <div class="add_file"><img src="Icones%20Rockstar%20Inc/upload%20album/add%20file.png" height="38" width="auto" alt="img"></div>
 
-    <!--Botões-->
+        <!--Botões-->
 
-    <div class="botao_add_song"><img src="Icones%20Rockstar%20Inc/upload%20song/botao%20upload%20song.png" height="69" width="auto" alt="img"></div>
+        <div class="botao_add_song"><img src="Icones%20Rockstar%20Inc/upload%20song/botao%20upload%20song.png" height="69" width="auto" alt="img"></div>
 
-    <div class="titulo"><img src="Icones%20Rockstar%20Inc/upload%20song/upload%20a%20song.png" height="auto" width="570" alt="img"></div>
-</div>
+        <div class="titulo"><img src="Icones%20Rockstar%20Inc/upload%20song/upload%20a%20song.png" height="auto" width="570" alt="img"></div>
+    </div>
 </main>
 </body>
 </html>

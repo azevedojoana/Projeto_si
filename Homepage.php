@@ -469,7 +469,7 @@ $user= $_SESSION['nome'];
             <!-- username -->
             <?php
 
-            print '<a href="ArtistPage.html"><h4>' . $user . '</h4></a>';
+            print '<a href="ArtistPage.php"><h4>' . $user . '</h4></a>';
 
             ?>
         </div>
@@ -480,13 +480,13 @@ $user= $_SESSION['nome'];
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
@@ -502,11 +502,11 @@ $user= $_SESSION['nome'];
         <div class="caixa_dir" ></div>
 
         <!--Playlists esq-->
-        <div class="foto_1"><a  href="Playlist.html"><img src="imagens/playlist%201.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_2"><a  href="Playlist.html"><img src="imagens/playlist%202.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_3"><a  href="Playlist.html"><img src="imagens/playlist%203.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_4"><a  href="Playlist.html"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_5"><a  href="Playlist.html"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_1"><a  href="Playlist.php"><img src="imagens/playlist%201.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_2"><a  href="Playlist.php"><img src="imagens/playlist%202.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_3"><a  href="Playlist.php"><img src="imagens/playlist%203.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_4"><a  href="Playlist.php"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_5"><a  href="Playlist.php"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
 
         <!--Texto Playlists esq-->
         <div class="texto_foto_1">Pop </div>
@@ -516,11 +516,11 @@ $user= $_SESSION['nome'];
         <div class="texto_foto_5">Chill</div>
 
         <!--Playlists dir-->
-        <div class="foto_6"><a  href="Artist.html"><img src="imagens/artist%201.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_7"><a  href="Artist.html"><img src="imagens/artist%202.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_8"><a  href="Artist.html"><img src="imagens/artist%203.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_9"><a  href="Artist.html"><img src="imagens/artist%204.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_10"><a  href="Artist.html"><img src="imagens/artist%205.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_6"><a  href="Artist.php"><img src="imagens/artist%201.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_7"><a  href="Artist.php"><img src="imagens/artist%202.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_8"><a  href="Artist.php"><img src="imagens/artist%203.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_9"><a  href="Artist.php"><img src="imagens/artist%204.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_10"><a  href="Artist.php"><img src="imagens/artist%205.jpg" height="226" width="226" alt="img"></a></div>
 
         <!--Texto Playlists dir-->
         <div class="texto_foto_6">The Police </div>
@@ -535,16 +535,16 @@ $user= $_SESSION['nome'];
 
         <!--Botões-->
         <div class="mais"><img src="Icones%20Rockstar%20Inc/Homepage/add%20playlist.png" height="124" width="auto" alt="img"></div>
-        <div class="see_all"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
-        <div class="see_more"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
+        <div class="see_all"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
+        <div class="see_more"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
     </div>
 </main>
 
 <footer>
     <div class="foter">
         <div id="musica">
-            <a href="Album.html"><p class="tipo2">Nome musica</p></a>
-            <a href="Artist.html"><p class="tipo3">Nome artista</p> </a>
+            <a href="Album.php"><p class="tipo2">Nome musica</p></a>
+            <a href="Artist.php"><p class="tipo3">Nome artista</p> </a>
         </div>
 
         <div class="space"></div>
@@ -560,7 +560,7 @@ $user= $_SESSION['nome'];
 
         <div id=logo >
             <!-- Logo -->
-            <a href="Homepage.html">
+            <a href="Homepage.php">
                 <img src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
             </a>
         </div>

@@ -1,9 +1,17 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Playlist - Rockstar</title>
+    <title>Results - Rockstar</title>
 
     <style>
 
@@ -24,27 +32,26 @@
 
         .foto_perfil img{
             position: absolute;
-            width: 438px;
-            height: 441px;
-            left: 160px;
-            top: 213px;
+            width: 118px;
+            height: 117px;
+            left: 249px;
+            top: 330px;
 
+            border-radius: 50%;
             border: 4px solid #FFFFFF;
-            border-radius: 16px;
         }
 
 
+        /* Caixa albums */
 
-        /* Caixa musicas */
-
-        .caixa_dir {
+        .caixa_esq {
             box-sizing: border-box;
 
             position: absolute;
-            width: 1102px;
-            height: 687px;
-            left: 660px;
-            top: 183px;
+            width: 851px;
+            height: 167px;
+            left: 205px;
+            top: 308px;
 
             background: #B3B7A8;
             border: 4px solid #FFFFFF;
@@ -52,26 +59,16 @@
         }
 
 
-        /* Singles */
-
-        .playlist {
-            position: absolute;
-            width: 302px;
-            height: 51px;
-            left: 701px;
-            top: 241px;
-        }
-
         /* Rectangle dir */
 
         .ret_1 {
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 345px;
+            left: 205px;
+            top: 496px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -85,10 +82,10 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 408px;
+            left: 205px;
+            top: 561px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -102,10 +99,10 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 471px;
+            left: 205px;
+            top: 625px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -118,10 +115,10 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 534px;
+            left: 205px;
+            top: 691px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -134,10 +131,10 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 597px;
+            left: 205px;
+            top: 755px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -150,10 +147,10 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 660px;
+            left: 205px;
+            top: 819px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
@@ -166,114 +163,88 @@
             box-sizing: border-box;
 
             position: absolute;
-            width: 1044px;
+            width: 1180px;
             height: 57px;
-            left: 687px;
-            top: 723px;
+            left: 205px;
+            top: 883px;
 
             background: #5C714F;
             border: 4px solid #FFFFFF;
             border-radius: 16px;
         }
 
+
+        /* 3 pontinhos */
+
+        .pont_1 {
+            position: absolute;
+            left: 1349px;
+            top: 512px;
+        }
+
         /* 3 pontinhos */
 
         .pont_2 {
             position: absolute;
-            left: 1701px;
-            top: 361px;
+            left: 1349px;
+            top: 577px;
 
             /* 3 pontinhos */
         }
 
         .pont_3 {
             position: absolute;
-            left: 1701px;
-            top: 424px;
+            left: 1349px;
+            top: 642px;
         }
 
         /* 3 pontinhos */
 
         .pont_4 {
             position: absolute;
-            left: 1701px;
-            top: 424px;
+            left: 1349px;
+            top: 706px;
         }
 
         /* 3 pontinhos */
 
         .pont_5 {
             position: absolute;
-            left: 1701px;
-            top: 488px;
+            left: 1349px;
+            top: 770px;
         }
 
         /* 3 pontinhos */
 
         .pont_6 {
             position: absolute;
-            left: 1701px;
-            top: 550px;
+            left: 1349px;
+            top: 835px;
         }
 
         /* 3 pontinhos */
 
         .pont_7 {
             position: absolute;
-            left: 1701px;
-            top: 613px;
-        }
-
-        /* 3 pontinhos */
-
-        .pont_8 {
-            position: absolute;
-            left: 1701px;
-            top: 676px;
-        }
-
-        /* 3 pontinhos */
-
-        .pont_9 {
-            position: absolute;
-            left: 1701px;
-            top: 739px;
+            left: 1349px;
+            top: 899px;
         }
 
 
-        /* Stuffed & Ready */
+        /* Cherry Glazerr */
+
         h1{
             position: absolute;
-            width: 438px;
-            height: 45px;
-            left: 160px;
-            top: 675px;
+            width: 654px;
+            height: 65px;
+            left: 404px;
+            top: 320px;
 
             font-family: 'Franklin Gothic Heavy';
             font-style: normal;
             font-weight: 400;
-            font-size: 50px;
-            line-height: 57px;
-            text-align: center;
-
-            color: #566D49;
-        }
-
-        /* Cherry Glazerr */
-
-        h2{
-            position: absolute;
-            width: 420px;
-            height: 45px;
-            left: 160px;
-            top: 738px;
-
-            font-family: 'Franklin Gothic Medium';
-            font-style: italic;
-            font-weight: 400;
-            font-size: 40px;
-            line-height: 45px;
-            text-align: center;
+            font-size: 60px;
+            line-height: 68px;
 
             color: #566D49;
         }
@@ -283,10 +254,10 @@
 
         .texto_ret_1 {
             position: absolute;
-            width: 600px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 359px;
+            left: 234px;
+            top: 510px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -303,10 +274,10 @@
 
         .texto_ret_2 {
             position: absolute;
-            width: 544px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 422px;
+            left: 234px;
+            top: 575px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -322,10 +293,10 @@
 
         .texto_ret_3 {
             position: absolute;
-            width: 544px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 486px;
+            left: 234px;
+            top: 640px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -341,10 +312,10 @@
 
         .texto_ret_4 {
             position: absolute;
-            width: 544px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 548px;
+            left: 234px;
+            top: 704px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -360,10 +331,10 @@
 
         .texto_ret_5 {
             position: absolute;
-            width: 544px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 613px;
+            left: 234px;
+            top: 769px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -379,10 +350,10 @@
 
         .texto_ret_6 {
             position: absolute;
-            width: 800px;
+            width: 737px;
             height: 24px;
-            left: 719px;
-            top: 675px;
+            left: 234px;
+            top: 832px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -398,10 +369,10 @@
 
         .texto_ret_7 {
             position: absolute;
-            width: 544px;
+            width: 550px;
             height: 24px;
-            left: 719px;
-            top: 737px;
+            left: 234px;
+            top: 896px;
 
             font-family: 'Franklin Gothic Medium';
             font-style: normal;
@@ -410,6 +381,62 @@
             line-height: 28px;
 
             color: #EAE4E1;
+        }
+
+        h2{
+            position: absolute;
+            width: 521px;
+            height: 45px;
+            left: 213px;
+            top: 204px;
+
+            font-family: 'Franklin Gothic Medium';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 45px;
+            line-height: 51px;
+
+            color: #566D49;
+        }
+
+        h3{
+            position: absolute;
+            width: 132px;
+            height: 45px;
+            left: 217px;
+            top: 86px;
+
+            font-family: 'Franklin Gothic Medium';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 35px;
+            line-height: 40px;
+
+            color: #566D49;
+        }
+
+        .artist{
+            position: absolute;
+            width: 142px;
+            height: 47px;
+            left: 357px;
+            top: 118px;
+        }
+
+        .song{
+            position: absolute;
+            width: 143px;
+            height: 47px;
+            left: 520px;
+            top: 118px;
+        }
+
+        .album{
+            position: absolute;
+            width: 142px;
+            height: 47px;
+            left: 685px;
+            top: 118px;
         }
 
     </style>
@@ -422,7 +449,7 @@
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="Homepage.html"><h4>Username</h4></a>
+            <a href="Homepage.php"><h4>Username</h4></a>
         </div>
 
         <div >
@@ -431,67 +458,69 @@
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
             <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
         </div>
     </div>
 </header>
 
 <main>
-<div class="container">
-    <h1>Studying</h1>
-    <h2>Username</h2>
-    <div class="foto_perfil"><img src="imagens/playlist%204.jpg" height="441" width="auto" alt="img"></div>
+    <div class="container">
+        <div class="caixa_esq" ></div>
+        <h1>Cherry Glazerr</h1>
+        <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="193" width="193" alt="img"></div>
 
-    <div class="caixa_esq" ></div>
-    <div class="caixa_dir" ></div>
+        <!--Musicas-->
 
-    <!--Musicas-->
+        <div class="ret_1"></div>
+        <div class="ret_2"></div>
+        <div class="ret_3"></div>
+        <div class="ret_4"></div>
+        <div class="ret_5"></div>
+        <div class="ret_6"></div>
+        <div class="ret_7"></div>
 
-    <div class="ret_1"></div>
-    <div class="ret_2"></div>
-    <div class="ret_3"></div>
-    <div class="ret_4"></div>
-    <div class="ret_5"></div>
-    <div class="ret_6"></div>
-    <div class="ret_7"></div>
+        <!--Texto Musicas-->
 
-    <!--Texto Musicas-->
+        <div class="texto_ret_1">Come Back Around - Moon Boots, ...</div>
+        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
+        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
+        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
+        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
+        <div class="texto_ret_6">Call Me (feat. Portugal. The Man)...</div>
+        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - ...</div>
 
-    <div class="texto_ret_1">Come Back Around - Moon Boots, Cherry Glazerr</div>
-    <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-    <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-    <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-    <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-    <div class="texto_ret_6">Call Me (feat. Portugal. The Man) - Cherry Glazerr, Portugal. The Man</div>
-    <div class="texto_ret_7">Daddy (Reggie Watts Remix) - Cherry Glazerr</div>
+        <!--Três pontinhos-->
 
-    <!--Três pontinhos-->
+        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
 
-    <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <!--Texto-->
+        <h2>Results for: Cherry Glazerr</h2>
+        <h3>Sort by:</h3>
 
-    <!--Títulos-->
+        <!--Botoes de filtro-->
 
-    <div class="playlist"><img src="Icones%20Rockstar%20Inc/playlist/playlist.png" height="auto" width="302" alt="img"></div>
+        <div class="artist"><img src="Icones%20Rockstar%20Inc/search/botao%20artist.png" height="auto" width="142" alt="img"></div>
+        <div class="song"><img src="Icones%20Rockstar%20Inc/search/botao%20song.png" height="auto" width="142" alt="img"></div>
+        <div class="album"><img src="Icones%20Rockstar%20Inc/search/botao%20album.png" height="auto" width="142" alt="img"></div>
 
-</div>
+    </div>
 </main>
 
 <footer>
@@ -514,11 +543,12 @@
 
         <div id=logo >
             <!-- Logo -->
-            <a href="Home.html">
+            <a href="Home.php">
                 <img src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
             </a>
         </div>
     </div>
 </footer>
+
 </body>
 </html>

@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -416,7 +424,7 @@
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="Homepage.html"><h4>Username</h4></a>
+            <a href="Homepage.php"><h4>Username</h4></a>
         </div>
 
         <div >
@@ -425,68 +433,68 @@
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
             <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.html"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
         </div>
     </div>
 </header>
 
 <main>
-<div class="container">
-    <h1>Stuffed & Ready</h1>
-    <h2>Cherry Glazerr</h2>
-    <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="441" width="auto" alt="img"></div>
+    <div class="container">
+        <h1>Stuffed & Ready</h1>
+        <h2>Cherry Glazerr</h2>
+        <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="441" width="auto" alt="img"></div>
 
-    <div class="caixa_esq" ></div>
-    <div class="caixa_dir" ></div>
+        <div class="caixa_esq" ></div>
+        <div class="caixa_dir" ></div>
 
-    <!--Musicas-->
+        <!--Musicas-->
 
-    <div class="ret_1"></div>
-    <div class="ret_2"></div>
-    <div class="ret_3"></div>
-    <div class="ret_4"></div>
-    <div class="ret_5"></div>
-    <div class="ret_6"></div>
-    <div class="ret_7"></div>
+        <div class="ret_1"></div>
+        <div class="ret_2"></div>
+        <div class="ret_3"></div>
+        <div class="ret_4"></div>
+        <div class="ret_5"></div>
+        <div class="ret_6"></div>
+        <div class="ret_7"></div>
 
-    <!--Texto Musicas-->
+        <!--Texto Musicas-->
 
-    <div class="texto_ret_1">Come Back Around - Moon Boots, Cherry Glazerr</div>
-    <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-    <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-    <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-    <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-    <div class="texto_ret_6">Call Me (feat. Portugal. The Man) - Cherry Glazerr, Portugal. The Man</div>
-    <div class="texto_ret_7">Daddy (Reggie Watts Remix) - Cherry Glazerr</div>
+        <div class="texto_ret_1">Come Back Around - Moon Boots, Cherry Glazerr</div>
+        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
+        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
+        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
+        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
+        <div class="texto_ret_6">Call Me (feat. Portugal. The Man) - Cherry Glazerr, Portugal. The Man</div>
+        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - Cherry Glazerr</div>
 
-    <!--Três pontinhos-->
+        <!--Três pontinhos-->
 
-    <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-    <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
 
-    <!--Títulos-->
+        <!--Títulos-->
 
-    <div class="songs"><img src="Icones%20Rockstar%20Inc/album/songs.png" height="auto" width="279" alt="img"></div>
+        <div class="songs"><img src="Icones%20Rockstar%20Inc/album/songs.png" height="auto" width="279" alt="img"></div>
 
-</div>
+    </div>
 </main>
 
 <footer>
@@ -509,7 +517,7 @@
 
         <div id=logo >
             <!-- Logo -->
-            <a href="Home.html">
+            <a href="Home.php">
                 <img src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
             </a>
         </div>
