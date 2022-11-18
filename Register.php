@@ -165,6 +165,29 @@
 </head>
 
 <body>
+
+<?php
+
+if(isset($_POST['username']) && isset($_POST['password'])){
+    $username= $_POST['username'];
+    $password= $_POST['password'];
+
+    $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
+    $conn= pg_connect($str) or die ("Erro na ligacao");
+
+    $user= pg_query($conn, "select * from User_ where username = '$username'" );
+    if(pg_fetch_array($user)!=false){
+        print "<script>alert('Esse username já está a ser utilizado, por favor escolha outro');</script>";
+    }else{
+        pg_query($conn, "insert into User_ (username, password) values('$username', '$password')" );
+        session_start();
+        $_SESSION['nome'] = $username;
+        header("Location: /Register.php/Homepage.php");
+    }
+}
+
+?>
+
 <header>
     <!-- Logo -->
     <img id=logo src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
@@ -186,23 +209,6 @@
             <input required name="password" type="password" class="password">
 
         </form>
-
-        <?php
-
-        if(isset($_POST['username']) && isset($_POST['password'])){
-            $username= $_POST['username'];
-            $password= $_POST['password'];
-
-            $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
-            $conn= pg_connect($str) or die ("Erro na ligacao");
-            echo "Ligação estabelecida";
-
-            pg_query($conn, "insert into User_ (username, password) values('$username', '$password')");
-
-
-        }
-
-        ?>
 
         <!--Texto-->
 

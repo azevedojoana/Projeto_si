@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$user= $_SESSION['nome'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -454,11 +462,16 @@
 </head>
 
 <body>
+
 <header>
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="ArtistPage.html"><h4>Username</h4></a>
+            <?php
+
+            print '<a href="ArtistPage.html"><h4>' . $user . '</h4></a>';
+
+            ?>
         </div>
 
         <div >
@@ -484,47 +497,47 @@
 </header>
 
 <main>
-<div class="container">
-    <div class="caixa_esq" ></div>
-    <div class="caixa_dir" ></div>
+    <div class="container">
+        <div class="caixa_esq" ></div>
+        <div class="caixa_dir" ></div>
 
-    <!--Playlists esq-->
-    <div class="foto_1"><a  href="Playlist.html"><img src="imagens/playlist%201.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_2"><a  href="Playlist.html"><img src="imagens/playlist%202.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_3"><a  href="Playlist.html"><img src="imagens/playlist%203.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_4"><a  href="Playlist.html"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_5"><a  href="Playlist.html"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
+        <!--Playlists esq-->
+        <div class="foto_1"><a  href="Playlist.html"><img src="imagens/playlist%201.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_2"><a  href="Playlist.html"><img src="imagens/playlist%202.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_3"><a  href="Playlist.html"><img src="imagens/playlist%203.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_4"><a  href="Playlist.html"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_5"><a  href="Playlist.html"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
 
-    <!--Texto Playlists esq-->
-    <div class="texto_foto_1">Pop </div>
-    <div class="texto_foto_2">#13</div>
-    <div class="texto_foto_3">Casa das...</div>
-    <div class="texto_foto_4">Studying</div>
-    <div class="texto_foto_5">Chill</div>
+        <!--Texto Playlists esq-->
+        <div class="texto_foto_1">Pop </div>
+        <div class="texto_foto_2">#13</div>
+        <div class="texto_foto_3">Casa das...</div>
+        <div class="texto_foto_4">Studying</div>
+        <div class="texto_foto_5">Chill</div>
 
-    <!--Playlists dir-->
-    <div class="foto_6"><a  href="Artist.html"><img src="imagens/artist%201.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_7"><a  href="Artist.html"><img src="imagens/artist%202.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_8"><a  href="Artist.html"><img src="imagens/artist%203.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_9"><a  href="Artist.html"><img src="imagens/artist%204.jpg" height="226" width="226" alt="img"></a></div>
-    <div class="foto_10"><a  href="Artist.html"><img src="imagens/artist%205.jpg" height="226" width="226" alt="img"></a></div>
+        <!--Playlists dir-->
+        <div class="foto_6"><a  href="Artist.html"><img src="imagens/artist%201.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_7"><a  href="Artist.html"><img src="imagens/artist%202.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_8"><a  href="Artist.html"><img src="imagens/artist%203.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_9"><a  href="Artist.html"><img src="imagens/artist%204.jpg" height="226" width="226" alt="img"></a></div>
+        <div class="foto_10"><a  href="Artist.html"><img src="imagens/artist%205.jpg" height="226" width="226" alt="img"></a></div>
 
-    <!--Texto Playlists dir-->
-    <div class="texto_foto_6">The Police </div>
-    <div class="texto_foto_7">Bjork</div>
-    <div class="texto_foto_8">Charlotte...</div>
-    <div class="texto_foto_9">Remi Wolf</div>
-    <div class="texto_foto_10">Men I Trust</div>
+        <!--Texto Playlists dir-->
+        <div class="texto_foto_6">The Police </div>
+        <div class="texto_foto_7">Bjork</div>
+        <div class="texto_foto_8">Charlotte...</div>
+        <div class="texto_foto_9">Remi Wolf</div>
+        <div class="texto_foto_10">Men I Trust</div>
 
-    <!--Títulos-->
-    <div class="playlists"><img src="Icones%20Rockstar%20Inc/Homepage/playlist%20homepage.png" height="auto" width="357" alt="img"></div>
-    <div class="artists"><img src="Icones%20Rockstar%20Inc/Homepage/artist%20homepage.png" height="auto" width="323" alt="img"></div>
+        <!--Títulos-->
+        <div class="playlists"><img src="Icones%20Rockstar%20Inc/Homepage/playlist%20homepage.png" height="auto" width="357" alt="img"></div>
+        <div class="artists"><img src="Icones%20Rockstar%20Inc/Homepage/artist%20homepage.png" height="auto" width="323" alt="img"></div>
 
-    <!--Botões-->
-    <div class="mais"><img src="Icones%20Rockstar%20Inc/Homepage/add%20playlist.png" height="124" width="auto" alt="img"></div>
-    <div class="see_all"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
-    <div class="see_more"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
-</div>
+        <!--Botões-->
+        <div class="mais"><img src="Icones%20Rockstar%20Inc/Homepage/add%20playlist.png" height="124" width="auto" alt="img"></div>
+        <div class="see_all"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
+        <div class="see_more"><a href="Search.html"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
+    </div>
 </main>
 
 <footer>
