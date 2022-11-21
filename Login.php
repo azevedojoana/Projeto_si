@@ -1,11 +1,3 @@
-<?php
-
-session_start();
-
-$user= $_SESSION['nome'];
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,123 +51,26 @@ $user= $_SESSION['nome'];
 
             color: #FFFFFF;
         }
-
-
-        /* Caixa grey baixo */
-
-        .password {
-            box-sizing: border-box;
-
+        .botao_listener {
             position: absolute;
-            width: 442px;
-            height: 51px;
-            left: 828px;
-            top: 608px;
-
-            background: #EAE4E1;
-            border: 2px solid #FFFFFF;
+            width: 239px;
+            height: 77px;
+            left: 981px;
+            top: 459px;
         }
 
-        /* Caixa grey cima */
-
-        .username {
-            box-sizing: border-box;
-
+        .botao_artist {
             position: absolute;
-            width: 442px;
-            height: 51px;
-            left: 828px;
-            top: 529px;
-
-            background: #EAE4E1;
-            border: 2px solid #FFFFFF;
-        }
-
-        /* Username: */
-
-        .texto_username {
-            position: absolute;
-            width: 167px;
-            height: 45px;
-            left: 643px;
-            top: 526px;
-
-            font-family: 'Franklin Gothic Medium';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 35px;
-            line-height: 40px;
-            text-align: right;
-
-            color: #FFFFFF;
-        }
-
-
-        /* Password: */
-
-        .texto_password {
-            position: absolute;
-            width: 167px;
-            height: 45px;
-            left: 643px;
-            top: 602px;
-
-            font-family: 'Franklin Gothic Medium';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 35px;
-            line-height: 40px;
-            text-align: right;
-
-            color: #FFFFFF;
-        }
-
-
-        /* Botão register */
-
-        .botao_register {
-            position: absolute;
-            width: 200px;
-            height: 66px;
-            left: 875px;
-            top: 753px;
-        }
-
-        /* Botão login */
-
-        .botao_login {
-            position: absolute;
-            width: 200px;
-            height: 66px;
-            left: 1100px;
-            top: 753px;
+            width: 239px;
+            height: 77px;
+            left: 700px;
+            top: 459px;
         }
     </style>
 
 </head>
 <body>
 
-<?php
-
-if(isset($_POST['username']) && isset($_POST['password'])){
-    $username= $_POST['username'];
-    $password= $_POST['password'];
-
-    $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
-    $conn= pg_connect($str) or die ("Erro na ligacao");
-
-    $user= pg_query($conn, "select * from User_ where username = '$username'" );
-    if(pg_fetch_array($user)!=false){
-        pg_query($conn, "insert into User_ (username, password) values('$username', '$password')" );
-        session_start();
-        $_SESSION['nome'] = $username;
-        header("Location: Homepage.php");
-    }else{
-        print "<script>alert('Esse username já está a ser utilizado, por favor escolha outro');</script>";
-    }
-}
-
-?>
 
 <header>
     <!-- Logo -->
@@ -189,24 +84,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
         <h1 class="login" >Login</h1>
 
-        <!--Caixas de texto-->
-
-        <form id="form_login" method="post" action="">
-
-        <input type="text" name="username" required placeholder="" class="username">
-        <input type="password" name="password" required placeholder="" class="password">
-
-        </form>
-
-        <!--Texto-->
-
-        <div class="texto_password">Password:</div>
-        <div class="texto_username">Username:</div>
-
         <!--Botões-->
 
-        <div class="botao_register"><a href="Register.php"><img src="Icones%20Rockstar%20Inc/Login/botao%20register.png" height="auto" width="179" alt="img"></a></div>
-        <div class="botao_login"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="auto" width="197" alt="img" onclick="javascript:document.getElementById('form_login').submit()" ></div>
+        <div class="botao_listener"><a  href="LoginListener.php"><img src="Icones%20Rockstar%20Inc/Register/botao%20listener.png" height="77" width="auto" alt="img"></div>
+        <div class="botao_artist"><a  href="LoginArtist.php"><img src="Icones%20Rockstar%20Inc/Register/botao%20artist.png" height="77" width="auto" alt="img"></div>
 
     </div>
 </main>

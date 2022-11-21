@@ -4,6 +4,9 @@ session_start();
 
 $user= $_SESSION['nome'];
 
+$str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
+$conn= pg_connect($str) or die ("Erro na ligacao");
+
 ?>
 
 <!DOCTYPE html>
@@ -419,12 +422,15 @@ $user= $_SESSION['nome'];
 </head>
 
 <body>
-
 <header>
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="Homepage.php"><h4>Username</h4></a>
+            <?php
+
+            print '<h4>' . $user . '</h4>';
+
+            ?>
         </div>
 
         <div >
@@ -433,7 +439,7 @@ $user= $_SESSION['nome'];
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Logout.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>

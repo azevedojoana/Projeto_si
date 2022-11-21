@@ -2,7 +2,14 @@
 
 session_start();
 
+if(!isset($_SESSION['nome'])){
+    header("Location: Login.php");
+}
+
 $user= $_SESSION['nome'];
+
+$str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
+$conn= pg_connect($str) or die ("Erro na ligacao");
 
 ?>
 
@@ -469,7 +476,7 @@ $user= $_SESSION['nome'];
             <!-- username -->
             <?php
 
-            print '<a href="ArtistPage.php"><h4>' . $user . '</h4></a>';
+            print '<h4>' . $user . '</h4>';
 
             ?>
         </div>
@@ -480,7 +487,7 @@ $user= $_SESSION['nome'];
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Logout.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
@@ -508,6 +515,7 @@ $user= $_SESSION['nome'];
         <div class="foto_4"><a  href="Playlist.php"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
         <div class="foto_5"><a  href="Playlist.php"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
 
+
         <!--Texto Playlists esq-->
         <div class="texto_foto_1">Pop </div>
         <div class="texto_foto_2">#13</div>
@@ -515,19 +523,24 @@ $user= $_SESSION['nome'];
         <div class="texto_foto_4">Studying</div>
         <div class="texto_foto_5">Chill</div>
 
-        <!--Playlists dir-->
-        <div class="foto_6"><a  href="Artist.php"><img src="imagens/artist%201.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_7"><a  href="Artist.php"><img src="imagens/artist%202.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_8"><a  href="Artist.php"><img src="imagens/artist%203.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_9"><a  href="Artist.php"><img src="imagens/artist%204.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_10"><a  href="Artist.php"><img src="imagens/artist%205.jpg" height="226" width="226" alt="img"></a></div>
 
-        <!--Texto Playlists dir-->
-        <div class="texto_foto_6">The Police </div>
-        <div class="texto_foto_7">Bjork</div>
-        <div class="texto_foto_8">Charlotte...</div>
-        <div class="texto_foto_9">Remi Wolf</div>
-        <div class="texto_foto_10">Men I Trust</div>
+        <?php
+
+        $artist_name= pg_query($conn, "select user__username,foto from artist" );
+        $artist_name= pg_fetch_all($artist_name);
+        for ($i=0; $i<count($artist_name) && $i<5;$i++){
+            print '<div class="foto_' . strval(6 + $i) . '"><a  href="Artist.php?artist=' . $artist_name[$i]['user__username'] . '"><img src="' . $artist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+        }
+
+        ?>
+
+        <?php
+
+        for ($i=0; $i<count($artist_name);$i++){
+            print '<div class="texto_foto_' . strval(6 + $i) . '">' . $artist_name[$i]['user__username'] . '</div>';
+        }
+
+        ?>
 
         <!--Títulos-->
         <div class="playlists"><img src="Icones%20Rockstar%20Inc/Homepage/playlist%20homepage.png" height="auto" width="357" alt="img"></div>

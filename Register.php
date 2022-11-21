@@ -61,77 +61,6 @@ $user= $_SESSION['nome'];
         }
 
 
-        /* Caixa grey baixo */
-
-        .password {
-            box-sizing: border-box;
-
-            position: absolute;
-            width: 442px;
-            height: 51px;
-            left: 836px;
-            top: 710px;
-
-            background: #EAE4E1;
-            border: 2px solid #FFFFFF;
-        }
-
-        /* Caixa grey cima */
-
-        .username {
-            box-sizing: border-box;
-
-            position: absolute;
-            width: 442px;
-            height: 51px;
-            left: 836px;
-            top: 631px;
-
-            background: #EAE4E1;
-            border: 2px solid #FFFFFF;
-        }
-
-        /* Username: */
-
-        .texto_username {
-            position: absolute;
-            width: 167px;
-            height: 45px;
-            left: 651px;
-            top: 628px;
-
-            font-family: 'Franklin Gothic Medium';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 35px;
-            line-height: 40px;
-            text-align: right;
-
-            color: #FFFFFF;
-        }
-
-
-        /* Password: */
-
-        .texto_password {
-
-            position: absolute;
-            width: 167px;
-            height: 45px;
-            left: 651px;
-            top: 704px;
-
-            font-family: 'Franklin Gothic Medium';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 35px;
-            line-height: 40px;
-            text-align: right;
-
-            color: #FFFFFF;
-        }
-
-
         /* Botão register */
 
         .botao_register {
@@ -174,28 +103,6 @@ $user= $_SESSION['nome'];
 
 <body>
 
-<?php
-
-if(isset($_POST['username']) && isset($_POST['password'])){
-    $username= $_POST['username'];
-    $password= $_POST['password'];
-
-    $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
-    $conn= pg_connect($str) or die ("Erro na ligacao");
-
-    $user= pg_query($conn, "select * from User_ where username = '$username'" );
-    if(pg_fetch_array($user)!=false){
-        print "<script>alert('Esse username já está a ser utilizado, por favor escolha outro');</script>";
-    }else{
-        pg_query($conn, "insert into User_ (username, password) values('$username', '$password')" );
-        session_start();
-        $_SESSION['nome'] = $username;
-        header("Location: Login.php");
-    }
-}
-
-?>
-
 <header>
     <!-- Logo -->
     <img id=logo src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
@@ -209,26 +116,11 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
         <h1 class="register" >Register</h1>
 
-        <!--Caixas de texto-->
-
-        <form id="form_register" method="post" action="">
-
-            <input required name="username" type="text" class="username">
-            <input required name="password" type="password" class="password">
-
-        </form>
-
-        <!--Texto-->
-
-        <div class="texto_password">Password:</div>
-        <div class="texto_username">Username:</div>
-
         <!--Botões-->
 
-        <div class="botao_register"><img src="Icones%20Rockstar%20Inc/Register/botao%20register2.png" height="73" width="auto" alt="img" onclick="javascript:document.getElementById('form_register').submit()" ></div>
         <div class="botao_login"><a href="Login.php"><img src="Icones%20Rockstar%20Inc/Login/botao%20login.png" height="70" width="auto" alt="img"></a></div>
-        <div class="botao_listener"><img src="Icones%20Rockstar%20Inc/Register/botao%20listener.png" height="77" width="auto" alt="img"></div>
-        <div class="botao_artist"><img src="Icones%20Rockstar%20Inc/Register/botao%20artist.png" height="77" width="auto" alt="img"></div>
+        <div class="botao_listener"><a  href="RegisterListener.php"><img src="Icones%20Rockstar%20Inc/Register/botao%20listener.png" height="77" width="auto" alt="img"></div>
+        <div class="botao_artist"><a  href="RegisterArtist.php"><img src="Icones%20Rockstar%20Inc/Register/botao%20artist.png" height="77" width="auto" alt="img"></div>
     </div>
 </main>
 

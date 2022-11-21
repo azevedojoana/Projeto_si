@@ -67,10 +67,14 @@ header{
     text-align:center;
     color: white;
     text-decoration:none;
-    font-size:110%;
+    font-size:65%;
 }
 
 #user h4{
+    text-align:center;
+    color: white;
+    text-decoration:none;
+    font-size:110%;
     margin:1.8vh 0;
 }
 

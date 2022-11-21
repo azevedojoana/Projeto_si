@@ -4,6 +4,9 @@ session_start();
 
 $user= $_SESSION['nome'];
 
+$str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
+$conn= pg_connect($str) or die ("Erro na ligacao");
+
 ?>
 
 <!DOCTYPE html>
@@ -653,7 +656,11 @@ $user= $_SESSION['nome'];
     <div id="headerL">
         <div id="user">
             <!-- username -->
-            <a href="Homepage.php"><h4>Username</h4></a>
+            <?php
+
+            print '<h4>' . $user . '</h4>';
+
+            ?>
         </div>
 
         <div >
@@ -662,7 +669,7 @@ $user= $_SESSION['nome'];
 
         <div id="logout">
             <!-- logout -->
-            <a  href="Login.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
+            <a  href="Logout.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
             </a>
         </div>
     </div>
@@ -679,8 +686,18 @@ $user= $_SESSION['nome'];
 </header>
 <main>
     <div class="container">
-        <h1>Cherry Glazerr</h1>
-        <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="193" width="193" alt="img"></div>
+
+        <?php
+
+        $artista= $_GET['artist'];
+
+        print '<h1>' . $artista . '</h1>';
+
+        $foto= pg_query($conn, "select foto from artist where user__username = '$artista'"  );
+        $foto= pg_fetch_array($foto);
+        print '<div class="foto_perfil"><img src="' . $foto['foto'] . '" height="193" width="193" alt="img"></div>';
+
+        ?>
 
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
