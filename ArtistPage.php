@@ -668,7 +668,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         </div>
 
         <div >
-            <h4 id="ident">Listener</h4>
+            <h4 id="ident">Artist</h4>
         </div>
 
         <div id="logout">
@@ -681,11 +681,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <!-- home -->
         <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
-        <!-- search -->
-        <div id="search">
-            <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
-        </div>
     </div>
 </header>
 
@@ -705,19 +700,23 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
 
-        <!--Albums-->
+        <?php
 
-        <a  href="Album.php"><div class="foto_1"><img src="imagens/album%20-%20cherry%20glazerr_stuffed%20and%20ready.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"><div class="foto_2"><img src="imagens/album%20-%20cherry_glazerr_apocalipstick.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"><div class="foto_3"><img src="imagens/album%20-%20cherry%20glazerr_haxel%20princess.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"><div class="foto_4"><img src="imagens/album%20-%20cherry%20glazerr_papa%20cremp.jpg" height="216" width="216" alt="img"></div></a>
+        $album= pg_query($conn, "select album_name,foto from album where artist_user__username='$user'" );
+        $album= pg_fetch_all($album);
+        for ($i=0; $i<count($album) && $i<5;$i++){
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumArtist.php?album=' . $album[$i]['album_name'] . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
+        }
 
-        <!--Texto Albums-->
+        ?>
 
-        <div class="texto_foto_1">Stuffed & Ready</div>
-        <div class="texto_foto_2">Apocalipstic</div>
-        <div class="texto_foto_3">Haxel Princess</div>
-        <div class="texto_foto_4">Papa Cremp</div>
+        <?php
+
+        for ($i=0; $i<count($album);$i++){
+            print '<div class="texto_foto_' . strval(1 + $i) . '">' . $album[$i]['album_name'] . '</div>';
+        }
+
+        ?>
 
         <!--Musicas-->
 
