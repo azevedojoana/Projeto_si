@@ -380,7 +380,7 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
         </div>
 
         <div >
-            <h4 id="ident">Listener</h4>
+            <h4 id="ident">Artist</h4>
         </div>
 
         <div id="logout">
@@ -391,7 +391,7 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
     </div>
 </header>

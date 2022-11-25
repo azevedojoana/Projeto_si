@@ -649,6 +649,13 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             top: 823px;
         }
 
+        .see_more{
+            position: absolute;
+            width: 197px;
+            height: 64px;
+            left: 875px;
+            top: 450px;
+        }
 
     </style>
 
@@ -677,11 +684,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             </a>
         </div>
     </div>
-    <div id="headerR">
-        <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
-    </div>
 </header>
 
 <main>
@@ -712,8 +715,16 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <?php
 
-        for ($i=0; $i<count($album);$i++){
+        for ($i=0; $i<count($album) && $i<5;$i++){
             print '<div class="texto_foto_' . strval(1 + $i) . '">' . $album[$i]['album_name'] . '</div>';
+        }
+
+        $song= pg_query($conn, "select LEFT(song_name, 5) AS ExtractString from music where single='true' and artist_user__username='$user'" );
+
+        $song= pg_fetch_all($song);
+
+        for ($i=0; $i<count($song) && $i<9;$i++){
+            print '<div class="texto_ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
         }
 
         ?>
@@ -764,6 +775,8 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <a href="UploadAlbum.php"><div class="add_album"><img src="Icones%20Rockstar%20Inc/artist%20page/botao%20add.png" height="auto" width="62" alt="img"></div></a>
         <a href="UploadSong.php"><div class="add_song"><img src="Icones%20Rockstar%20Inc/artist%20page/botao%20add.png" height="auto" width="62" alt="img"></div></a>
+
+        <div class="see_more"><a href="AllAlbumsArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
 
     </div>
 </main>

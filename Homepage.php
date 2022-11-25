@@ -465,6 +465,194 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             left: 1575px;
             top: 675px;
         }
+
+        .contPopup{
+            display:none;
+        }
+
+        /* Caixa grey */
+        .popup{
+            z-index:1;
+            position: absolute;
+            width: 752px;
+            height: 450px;
+            left: 584px;
+            top: 315px;
+            background: #EAE4E1;
+            border-radius: 33px;
+        }
+
+        /* Playlist */
+        .playTitle{
+            z-index:1;
+            position: absolute;
+            width: 454px;
+            height: 33px;
+            left: 763px;
+            top: 350px;
+        }
+
+        /* Botão search */
+        .playContGenre>img{
+            z-index:1;
+            position: absolute;
+            width: 106px;
+            height: 37px;
+            left: 1053px;
+            top: 448px;
+
+        }
+
+        /* Botão create new playlist */
+        .playContName>img{
+            z-index:1;
+            position: absolute;
+            width: 200px;
+            height: 37px;
+            left: 1071px;
+            top: 592px;
+        }
+
+        /* Botão search baixo */
+        .playContSearch>img{
+            z-index:1;
+            position: absolute;
+            width: 105px;
+            height: 37px;
+            left: 1166px;
+            top: 670px;
+        }
+
+        /* caixa texto by genre */
+        .playContGenre>textarea{
+            z-index:1;
+            box-sizing: border-box;
+            position: absolute;
+            width: 261px;
+            height: 38px;
+            left: 782px;
+            top: 448px;
+            background: #FFFFFF;
+            border: 1px solid #39542A;
+            border-radius: 7px 0px 0px 7px;
+        }
+
+
+        /* caixa texto playlist name */
+        .playContName>textarea{
+            z-index:1;
+            box-sizing: border-box;
+            position: absolute;
+            width: 261px;
+            height: 38px;
+            left: 802px;
+            top: 592px;
+            background: #FFFFFF;
+            border: 1px solid #39542A;
+            border-radius: 7px 0px 0px 7px;
+        }
+
+        /* caixa texto numero de musicas */
+        .playContGenre>select{
+            z-index:1;
+            box-sizing: border-box;
+            position: absolute;
+            width: 58px;
+            height: 38px;
+            left: 1174px;
+            top: 448px;
+            background: #FFFFFF;
+            border: 1px solid #39542A;
+            border-radius: 4px;
+        }
+
+        /* caixa texto search songs */
+        .playContSearch>textarea {
+            z-index:1;
+            box-sizing: border-box;
+            position: absolute;
+            width: 354px;
+            height: 38px;
+            left: 802px;
+            top: 670px;
+            background: #FFFFFF;
+            border: 1px solid #39542A;
+            border-radius: 7px 0px 0px 7px;
+        }
+
+        /* Line 1 */
+        .playLinha{
+            z-index:1;
+            position: absolute;
+            width: 751px;
+            height: 0px;
+            left: 585px;
+            top: 511px;
+            border: 2px solid #39542A;
+        }
+
+        /* Playlist Name: */
+        .playContName>label{
+            z-index:1;
+            position: absolute;
+            width: 249px;
+            height: 45px;
+            left: 632px;
+            top: 592px;
+            font-family: 'Franklin Gothic Medium';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 28px;
+            color: #566D49;
+        }
+
+        /* Search Songs: */
+        .playContSearch>label{
+            z-index:1;
+            position: absolute;
+            width: 249px;
+            height: 45px;
+            left: 630px;
+            top: 668px;
+            font-family: 'Franklin Gothic Medium';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 28px;
+            color: #566D49;
+        }
+
+
+        /* By Genre: */
+        .playContGenre>label{
+            z-index:1;
+            position: absolute;
+            width: 249px;
+            height: 45px;
+            left: 666px;
+            top: 452px;
+            font-family: 'Franklin Gothic Medium';
+            font-style: italic;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 28px;
+            color: #566D49;
+        }
+
+        .fechar{
+            z-index: 1;
+            width:40px;
+            height: 40px;
+            border:3px beige solid;
+            background-color: green;
+            color:beige;
+            top: 350px;
+            left:1230px;
+            box-sizing: border-box;
+            position: absolute;
+            border-radius: 50px;
+        }
     </style>
 </head>
 
@@ -549,8 +737,38 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <!--Botões-->
         <div class="mais"><img src="Icones%20Rockstar%20Inc/Homepage/add%20playlist.png" height="124" width="auto" alt="img"></div>
         <div class="see_all"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
-        <div class="see_more"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
+        <div class="see_more"><a href="AllArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
+
+        <div class="contPopup">
+            <div class="popup">
+            </div>
+            <div class="playTitle">
+                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/create%20new%20playlist.png"  height="40" width="auto" alt="img">
+            </div>
+            <div class="playContGenre">
+                <label>By Genre:</label>
+                <textarea></textarea>
+                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20search.png"  height="40" width="auto" alt="img"></button>
+                <select></select>
+            </div>
+            <div class="playLinha"></div>
+            <div class="playContName">
+                <label>Playlist Name:</label>
+                <textarea></textarea>
+                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20create%20new%20playlist.png" height="40" width="auto" alt="img">
+            </div>
+            <div class="playContSearch">
+                <label>Search Songs:</label>
+                <textarea></textarea>
+                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20search.png" height="40" width="auto" alt="img">
+            </div>
+            <button class="fechar">
+            </button>
+        </div>
+
     </div>
+
+
 </main>
 
 <footer>
@@ -580,4 +798,17 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
 </footer>
 </body>
+
+<script>
+
+    document.querySelector(".mais").addEventListener('click',function(){
+        document.querySelector(".contPopup").style.cssText="display:block";
+
+        document.querySelector(".fechar").addEventListener('click',function(){
+            document.querySelector(".contPopup").style.cssText="display:none";
+
+        });
+    });
+
+</script>
 </html>

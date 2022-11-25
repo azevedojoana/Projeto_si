@@ -171,6 +171,27 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <?php
 
             print '<a href="ArtistPage.php"><h1>' . $user . '</h1></a>';
+
+            if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['song'])) {
+
+                $song_name= $_POST['song_name'];
+                $song_genre= $_POST['song_genre'];
+
+
+                $target_dir = "musicas/";
+                $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
+                $target_file = $target_dir . $song_name . $user . "." . $musicFileType;
+                $tmp = $_FILES["song"]["name"];
+
+                if (!move_uploaded_file($_FILES["song"]["tmp_name"], $target_file)) {
+                    echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
+                }
+                else{
+                    pg_query($conn, "insert into music (song_name, file, genre_genre_name,single,artist_user__username) values('$song_name', '$target_file','$song_genre','true','$user')" );
+                }
+
+
+            }
             ?>
         </div>
 
@@ -186,7 +207,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
@@ -199,10 +220,26 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     <div class="container">
 
         <div class="caixa"></div>
-        <!--Caixas de texto-->
 
-        <input required type="text" placeholder="" class="song_name">
-        <input required type="text" placeholder="" class="song_genre">
+        <form id="upload_song" method="post" action="" enctype="multipart/form-data">
+            <!--Caixas de texto-->
+
+            <input required type="text" placeholder="" class="song_name" name="song_name">
+
+            <select class="song_genre" name="song_genre" >
+                <?php
+
+                $genre= pg_query($conn, "select genre_name from genre order by genre asc");
+                $genre= pg_fetch_all($genre);
+                foreach ($genre as $genero){
+                    print '<option value="' . $genero['genre_name'] . '">' . $genero['genre_name'] . '</option>';
+                }
+                ?>
+            </select>
+
+            <input class="add_file" type="file" name="song" accept="mp3">
+
+        </form>
 
         <!--Texto-->
 
@@ -211,13 +248,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <div class="texto_song_genre">Song Genre:</div>
         <div class="upload_song">Upload Song:</div>
 
-        <!--Add File-->
-
-        <div class="add_file"><img src="Icones%20Rockstar%20Inc/upload%20album/add%20file.png" height="38" width="auto" alt="img"></div>
 
         <!--Botões-->
 
-        <div class="botao_add_song"><img src="Icones%20Rockstar%20Inc/upload%20song/botao%20upload%20song.png" height="69" width="auto" alt="img"></div>
+        <div class="botao_add_song" onclick="javascript:document.getElementById('upload_song').submit()"><img src="Icones%20Rockstar%20Inc/upload%20song/botao%20upload%20song.png" height="69" width="auto" alt="img"></div>
 
         <div class="titulo"><img src="Icones%20Rockstar%20Inc/upload%20song/upload%20a%20song.png" height="auto" width="570" alt="img"></div>
     </div>

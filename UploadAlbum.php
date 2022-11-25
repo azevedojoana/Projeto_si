@@ -258,7 +258,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
     </div>
 </header>

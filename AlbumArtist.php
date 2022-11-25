@@ -445,17 +445,26 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
     </div>
 </header>
 
 <main>
     <div class="container">
-        <h1>Stuffed & Ready</h1>
-        <h2>Cherry Glazerr</h2>
-        <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="441" width="auto" alt="img"></div>
+        <?php
 
+        $album_name= $_GET['album'];
+
+        print '<h1>' . $album_name . '</h1>';
+        print '<h2>' . $user . '</h2>';
+
+        $foto= pg_query($conn, "select foto from album where album_name='$album_name'" );
+        $foto= pg_fetch_array($foto);
+
+        print '<div class="foto_perfil"><img src=' . $foto['foto'] . '" height="441" width="auto" alt="img"></div>';
+
+        ?>
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
 
