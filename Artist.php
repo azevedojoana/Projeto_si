@@ -697,60 +697,42 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         $foto= pg_fetch_array($foto);
         print '<div class="foto_perfil"><img src="' . $foto['foto'] . '" height="193" width="193" alt="img"></div>';
 
+
         ?>
 
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
 
-        <!--Albums-->
+        <?php
 
-        <a  href="Album.php"><div class="foto_1"><img src="imagens/album%20-%20cherry%20glazerr_stuffed%20and%20ready.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"> <div class="foto_2"><img src="imagens/album%20-%20cherry_glazerr_apocalipstick.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"><div class="foto_3"><img src="imagens/album%20-%20cherry%20glazerr_haxel%20princess.jpg" height="216" width="216" alt="img"></div></a>
-        <a  href="Album.php"><div class="foto_4"><img src="imagens/album%20-%20cherry%20glazerr_papa%20cremp.jpg" height="216" width="216" alt="img"></div></a>
+        $album= pg_query($conn, "select album_name,foto from album where artist_user__username='$artista'" );
+        $album= pg_fetch_all($album);
+        for ($i=0; $i<count($album) && $i<5;$i++){
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumListener.php?album=' . $album[$i]['album_name'] . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
 
-        <!--Texto Albums-->
+        }
 
-        <div class="texto_foto_1">Stuffed & Ready</div>
-        <div class="texto_foto_2">Apocalipstic</div>
-        <div class="texto_foto_3">Haxel Princess</div>
-        <div class="texto_foto_4">Papa Cremp</div>
+        ?>
 
-        <!--Musicas-->
+        <?php
 
-        <div class="ret_1"></div>
-        <div class="ret_2"></div>
-        <div class="ret_3"></div>
-        <div class="ret_4"></div>
-        <div class="ret_5"></div>
-        <div class="ret_6"></div>
-        <div class="ret_7"></div>
-        <div class="ret_8"></div>
-        <div class="ret_9"></div>
+        for ($i=0; $i<count($album) && $i<5;$i++){
+            print '<div class="texto_foto_' . strval(1 + $i) . '">' . $album[$i]['album_name'] . '</div>';
+        }
 
-        <!--Texto Musicas-->
+        $song= pg_query($conn, "select song_name from music where single='true' and artist_user__username='$artista'" );
 
-        <div class="texto_ret_1">Come Back Around - Moon Boots, ...</div>
-        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-        <div class="texto_ret_6">Call Me (feat. Portugal. The Man)...</div>
-        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - ...</div>
-        <div class="texto_ret_8">Juicy Socks - Cherry Glazerr</div>
-        <div class="texto_ret_9">Territorial Pissings - Cherry Glazerr</div>
 
-        <!--Três pontinhos-->
+        //   print pg_affected_rows($song);
 
-        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        //   exit();
+        $song= pg_fetch_all($song);
+
+        for ($i=0; $i<count($song) && $i<9;$i++){
+            print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+        }
+        ?>
 
         <!--Títulos-->
 

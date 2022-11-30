@@ -492,19 +492,20 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             top: 350px;
         }
 
-        /* Botão search */
-        .playContGenre>img{
+        /* Botão add playlist genre */
+
+        .botao_add_playlist_genre{
             z-index:1;
             position: absolute;
             width: 106px;
             height: 37px;
-            left: 1053px;
+            left: 1153px;
             top: 448px;
-
         }
 
         /* Botão create new playlist */
-        .playContName>img{
+
+        .botao_add_playlist_name{
             z-index:1;
             position: absolute;
             width: 200px;
@@ -524,7 +525,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         }
 
         /* caixa texto by genre */
-        .playContGenre>textarea{
+        .playContGenre>form>.songs_number{
             z-index:1;
             box-sizing: border-box;
             position: absolute;
@@ -537,9 +538,18 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             border-radius: 7px 0px 0px 7px;
         }
 
+        .submeter_foto_genre{
+            z-index:1;
+            position: absolute;
+            width: 261px;
+            height: 38px;
+            left: 782px;
+            top: 400px;
+        }
+
 
         /* caixa texto playlist name */
-        .playContName>textarea{
+        .playContName>form>.playlist_name{
             z-index:1;
             box-sizing: border-box;
             position: absolute;
@@ -552,18 +562,28 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             border-radius: 7px 0px 0px 7px;
         }
 
-        /* caixa texto numero de musicas */
-        .playContGenre>select{
+        .submeter_foto_name{
+            z-index:1;
+            position: absolute;
+            width: 261px;
+            height: 38px;
+            left: 802px;
+            top: 692px;
+        }
+
+        /* caixa genero de musicas */
+
+        .song_genre{
             z-index:1;
             box-sizing: border-box;
             position: absolute;
-            width: 58px;
+            width: 100px;
             height: 38px;
-            left: 1174px;
+            left: 1053px;
             top: 448px;
             background: #FFFFFF;
             border: 1px solid #39542A;
-            border-radius: 4px;
+            border-radius: 0px 7px 7px 0px;
         }
 
         /* caixa texto search songs */
@@ -658,6 +678,39 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <body>
 
+<?php
+
+if(isset($_FILES['foto_genre_playlist']) && isset($_POST['songs_number']) && isset($_POST['song_genre'])) {
+
+    $song_genre= $_POST['song_genre'];
+    $playlist_name= $_POST['song_genre'];
+    $number= $_POST['songs_number'];
+
+    $target_dir = "playlist_fotos/";
+    $imageFileType = strtolower(pathinfo($_FILES['foto_genre_playlist']['name'],PATHINFO_EXTENSION));
+    $target_file = $target_dir . $playlist_name . $user . "." . $imageFileType;
+
+    if (!move_uploaded_file($_FILES["foto_genre_playlist"]["tmp_name"], $target_file)) {
+        echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
+    }else{
+        $ins = pg_query($conn, "insert into playlist (playlist_name, foto,client_user__username) values('$playlist_name', '$target_file','$user') returning id" );
+        $ins = pg_fetch_array($ins);
+        $playlist_id = $ins["id"];
+
+
+        $musicas = pg_query($conn, "select id from music where genre_genre_name='$song_genre' LIMIT $number" );
+        $musicas = pg_fetch_all($musicas);
+        foreach ($musicas as $songs){
+            $song_id = $songs['id'];
+            pg_query($conn, "insert into playlist_music (playlist_id, music_id) values('$playlist_id', '$song_id')" );
+        }
+
+    }
+}
+
+
+?>
+
 <header>
     <div id="headerL">
         <div id="user">
@@ -724,7 +777,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <?php
 
-        for ($i=0; $i<count($artist_name);$i++){
+        for ($i=0; $i<count($artist_name)&& $i<5;$i++){
             print '<div class="texto_foto_' . strval(6 + $i) . '">' . $artist_name[$i]['user__username'] . '</div>';
         }
 
@@ -747,27 +800,44 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             </div>
             <div class="playContGenre">
                 <label>By Genre:</label>
-                <textarea></textarea>
-                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20search.png"  height="40" width="auto" alt="img"></button>
-                <select></select>
+                <form id="upload_playlist_genre" method="post" action="" enctype="multipart/form-data">
+
+                    <input required type="text" placeholder="" class="songs_number" name="songs_number">
+                    <input class="submeter_foto_genre" type="file" name="foto_genre_playlist" accept=".jpg, .png">
+                    <select class="song_genre" name="song_genre" >
+                        <?php
+
+                        $genre= pg_query($conn, "select genre_name from genre order by genre asc");
+                        $genre= pg_fetch_all($genre);
+                        foreach ($genre as $genero){
+                            print '<option value="' . $genero['genre_name'] . '">' . $genero['genre_name'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                    <button class="botao_add_playlist_genre" type="submit" name="create_playlist">Add playlist</button>
+                </form>
             </div>
             <div class="playLinha"></div>
             <div class="playContName">
                 <label>Playlist Name:</label>
-                <textarea></textarea>
-                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20create%20new%20playlist.png" height="40" width="auto" alt="img">
-            </div>
-            <div class="playContSearch">
-                <label>Search Songs:</label>
-                <textarea></textarea>
-                <img src="Icones%20Rockstar%20Inc/Homepage/separador%20create%20new%20playlist/botao%20search.png" height="40" width="auto" alt="img">
+
+                <!--Criar playlist por NOME-->
+
+                <form id="upload_playlist_name" method="post" action="UploadPlaylistName.php" enctype="multipart/form-data">
+
+                    <input required type="text" placeholder="" class="playlist_name" name="playlist_name">
+
+                    <input class="submeter_foto_name" type="file" name="foto_name_playlist" accept=".jpg, .png">
+                    <button class="botao_add_playlist_name" type="submit" name="create_playlist">Add playlist</button>
+
+                </form>
+
             </div>
             <button class="fechar">
             </button>
         </div>
 
     </div>
-
 
 </main>
 

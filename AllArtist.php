@@ -38,6 +38,22 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             font-size: 12px;
         }
 
+        #asc{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 0px;
+            top: -10px;
+        }
+
+        #desc{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 50px;
+            top: -10px;
+        }
+
     </style>
 </head>
 
@@ -83,7 +99,14 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
             <?php
 
-            $artist_name= pg_query($conn, "select user__username,foto from artist" );
+
+            if(isset($_GET["inverse"]) && $_GET["inverse"] == 1) {
+                $artist_name= pg_query($conn, "select user__username,foto from artist  order by user__username desc");
+            }
+            else {
+                $artist_name= pg_query($conn, "select user__username,foto from artist order by user__username asc" );
+            }
+
             $artist_name= pg_fetch_all($artist_name);
             for ($i=0; $i<count($artist_name);$i++){
                 print '<div class="foto"><a  href="Artist.php?artist=' . $artist_name[$i]['user__username'] . '"><img src="' . $artist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
@@ -97,10 +120,16 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
                 print '<h4 class="texto_foto" >' . $artist_name[$i]['user__username'] . '</h4>';
             }
 
+
+
             ?>
 
         </div>
     </section>
+
+    <button type="button" value="A-Z" id="asc" ><a href="AllArtist.php">A-Z</a></button>
+    <button type="button" value="Z-A" id="desc"><a href="?inverse=1">Z-A</a></button>
+
 
 </main>
 
@@ -131,4 +160,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
 </footer>
 </body>
+
+
 </html>

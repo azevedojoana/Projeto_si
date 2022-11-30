@@ -272,9 +272,8 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <!--Caixas de texto-->
 
             <input required type="text" placeholder="" class="album_name" name="album_name">
-            </input>
 
-            <input class="add_file1" type="file" name="foto_album" accept="mp3">
+            <input class="add_file1" type="file" name="foto_album" accept=".jpg, .png">
             <button type="submit" class="create_album" name="create_album" value="Create Album" >Create Album</button>
 
         </form>

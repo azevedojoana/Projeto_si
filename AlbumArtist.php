@@ -451,6 +451,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 </header>
 
 <main>
+
+    <div class="caixa_esq" ></div>
+    <div class="caixa_dir" ></div>
+
     <div class="container">
         <?php
 
@@ -459,46 +463,23 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         print '<h1>' . $album_name . '</h1>';
         print '<h2>' . $user . '</h2>';
 
-        $foto= pg_query($conn, "select foto from album where album_name='$album_name'" );
-        $foto= pg_fetch_array($foto);
+        $album= pg_query($conn, "select foto, id from album where album_name='$album_name'" );
+        $album= pg_fetch_array($album);
+        $album_id = $album["id"];
 
-        print '<div class="foto_perfil"><img src=' . $foto['foto'] . '" height="441" width="auto" alt="img"></div>';
+        print '<div class="foto_perfil"><img src="' . $album['foto'] . '" height="441" width="auto" alt="img"></div>';
+
+        $song= pg_query($conn, "select music_id,song_name from album_music,music where album_id=$album_id and  id=music_id" );
+        $song= pg_fetch_all($song);
+
+        for ($i=0; $i<count($song); $i++){
+
+            print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+        }
 
         ?>
-        <div class="caixa_esq" ></div>
-        <div class="caixa_dir" ></div>
 
-        <!--Musicas-->
-
-        <div class="ret_1"></div>
-        <div class="ret_2"></div>
-        <div class="ret_3"></div>
-        <div class="ret_4"></div>
-        <div class="ret_5"></div>
-        <div class="ret_6"></div>
-        <div class="ret_7"></div>
-
-        <!--Texto Musicas-->
-
-        <div class="texto_ret_1">Come Back Around - Moon Boots, Cherry Glazerr</div>
-        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-        <div class="texto_ret_6">Call Me (feat. Portugal. The Man) - Cherry Glazerr, Portugal. The Man</div>
-        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - Cherry Glazerr</div>
-
-        <!--Três pontinhos-->
-
-        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
 
         <!--Títulos-->
 

@@ -380,6 +380,107 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             top: 764px;
         }
 
+        /* audio */
+
+        .aud_1 {
+            scale: 70%;
+            position: absolute;
+            left: 1100px;
+            top: 312px;
+        }
+
+        /* audio */
+
+        .aud_2 {
+            scale: 70%;
+            position: absolute;
+            left: 1100px;
+            top: 378px;
+
+            /* audio */
+        }
+
+        .aud_3 {
+            scale: 70%;
+            position: absolute;
+            left: 1100px;
+            top: 443px;
+        }
+
+        /* audio */
+
+        .aud_4 {
+            scale: 70%;
+            position: absolute;
+            left: 1100px;
+            top: 507px;
+        }
+
+        /* audio */
+
+        .aud_5 {
+            scale: 70%;
+            position: absolute;
+            left: 1000px;
+            top: 572px;
+        }
+
+        /* audio */
+
+        .aud_6 {
+            position: absolute;
+            left: 1100px;
+            top: 637px;
+        }
+
+        /* audio */
+
+        .aud_7 {
+            position: absolute;
+            left: 1100px;
+            top: 701px;
+        }
+
+        /* audio */
+
+        .aud_8 {
+            position: absolute;
+            left: 1100px;
+            top: 767px;
+        }
+
+        /* audio */
+
+        .aud_9 {
+            position: absolute;
+            left: 1100px;
+            top: 764px;
+        }
+
+        /* audio */
+
+        .aud_10 {
+            position: absolute;
+            left: 1100px;
+            top: 764px;
+        }
+
+        /* audio */
+
+        .aud_11 {
+            position: absolute;
+            left: 1100px;
+            top: 764px;
+        }
+
+        /* audio */
+
+        .aud_12 {
+            position: absolute;
+            left: 1100px;
+            top: 764px;
+        }
+
 
         /* Stuffed & Ready */
 
@@ -657,6 +758,14 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             top: 450px;
         }
 
+        .see_all{
+            position: absolute;
+            width: 179px;
+            height: 58px;
+            left: 1467px;
+            top: 850px;
+        }
+
     </style>
 
 </head>
@@ -718,53 +827,20 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         for ($i=0; $i<count($album) && $i<5;$i++){
             print '<div class="texto_foto_' . strval(1 + $i) . '">' . $album[$i]['album_name'] . '</div>';
         }
-
-        $song= pg_query($conn, "select LEFT(song_name, 5) AS ExtractString from music where single='true' and artist_user__username='$user'" );
+        $song= pg_query($conn, "select song_name, file from music where single='true' and artist_user__username='$user'" );
 
         $song= pg_fetch_all($song);
 
         for ($i=0; $i<count($song) && $i<9;$i++){
-            print '<div class="texto_ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+            print '<audio class="aud_' . strval(1 + $i) . '" controls>
+            <source src="' . $song[$i]['file'] . '" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>';
         }
 
         ?>
-
-        <!--Musicas-->
-
-        <div class="ret_1"></div>
-        <div class="ret_2"></div>
-        <div class="ret_3"></div>
-        <div class="ret_4"></div>
-        <div class="ret_5"></div>
-        <div class="ret_6"></div>
-        <div class="ret_7"></div>
-        <div class="ret_8"></div>
-
-        <!--Texto Musicas-->
-
-        <div class="texto_ret_1">Come Back Around - Moon Boots, ...</div>
-        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-        <div class="texto_ret_6">Call Me (feat. Portugal. The Man)...</div>
-        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - ...</div>
-        <div class="texto_ret_8">Juicy Socks - Cherry Glazerr</div>
-
-        <!--Três pontinhos-->
-
-        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_10"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_11"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_12"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
 
         <!--Títulos-->
 
@@ -777,6 +853,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <a href="UploadSong.php"><div class="add_song"><img src="Icones%20Rockstar%20Inc/artist%20page/botao%20add.png" height="auto" width="62" alt="img"></div></a>
 
         <div class="see_more"><a href="AllAlbumsArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
+        <div class="see_all"><a href="AllSongsArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
 
     </div>
 </main>
