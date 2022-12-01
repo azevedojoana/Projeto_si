@@ -7,6 +7,10 @@ $user= $_SESSION['nome'];
 $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
 $conn= pg_connect($str) or die ("Erro na ligacao");
 
+$playlist_name= $_GET['playlist'];
+
+print '<title>' . $playlist_name . ' - Rockstar</title>';
+
 ?>
 
 
@@ -465,43 +469,33 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <main>
     <div class="container">
-        <h1>Studying</h1>
-        <h2>Username</h2>
         <div class="foto_perfil"><img src="imagens/playlist%204.jpg" height="441" width="auto" alt="img"></div>
 
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
 
-        <!--Musicas-->
+        <?php
 
-        <div class="ret_1"></div>
-        <div class="ret_2"></div>
-        <div class="ret_3"></div>
-        <div class="ret_4"></div>
-        <div class="ret_5"></div>
-        <div class="ret_6"></div>
-        <div class="ret_7"></div>
+        print '<h2>' . $user . '</h2>';
 
-        <!--Texto Musicas-->
+        print '<h1 style="text-transform: capitalize;">' . $playlist_name . '</h1>';
 
-        <div class="texto_ret_1">Come Back Around - Moon Boots, Cherry Glazerr</div>
-        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-        <div class="texto_ret_6">Call Me (feat. Portugal. The Man) - Cherry Glazerr, Portugal. The Man</div>
-        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - Cherry Glazerr</div>
+        $playlist= pg_query($conn, "select foto, id from playlist where playlist_name='$playlist_name'" );
+        $playlist= pg_fetch_array($playlist);
+        $playlist_id = $playlist["id"];
 
-        <!--Três pontinhos-->
+        print '<div class="foto_perfil"><img src="' . $playlist['foto'] . '" height="441" width="auto" alt="img"></div>';
 
-        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_8"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_9"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+        $song= pg_query($conn, "select music_id,song_name from playlist_music,music where playlist_id=$playlist_id and  id=music_id" );
+        $song= pg_fetch_all($song);
+
+        for ($i=0; $i<count($song); $i++){
+
+            print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+        }
+
+        ?>
 
         <!--Títulos-->
 

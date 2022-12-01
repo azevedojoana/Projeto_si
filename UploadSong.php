@@ -170,13 +170,12 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <!-- username -->
             <?php
 
-            print '<a href="ArtistPage.php"><h1>' . $user . '</h1></a>';
+            print '<h1>' . $user . '</h1>';
 
             if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['song'])) {
 
                 $song_name= $_POST['song_name'];
                 $song_genre= $_POST['song_genre'];
-
 
                 $target_dir = "musicas/";
                 $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
@@ -189,9 +188,8 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
                 else{
                     pg_query($conn, "insert into music (song_name, file, genre_genre_name,single,artist_user__username) values('$song_name', '$target_file','$song_genre','true','$user')" );
                 }
-
-
             }
+
             ?>
         </div>
 

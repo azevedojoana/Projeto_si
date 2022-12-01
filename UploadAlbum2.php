@@ -324,17 +324,10 @@ if(isset($_POST['album_name']) && isset($_FILES['foto_album'])){
         $_SESSION['album_name'] = $album_name;
         $_SESSION['album_photo'] = $target_file;
     }
-    
 }
-
 
 print '<h1>' . $_SESSION['album_name'] . '</h1>';
 print '<div class="foto_perfil"><img src="' . $_SESSION['album_photo'] . '" height="193" width="193" alt="img"></div>';
-
-
-
-
-
 
 
 if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['song'])) {
@@ -342,7 +335,6 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
 
     $song_name= $_POST['song_name'] ;
     $song_genre= $_POST['song_genre'];
-
 
     $target_dir = "musicas/";
     $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
@@ -358,11 +350,7 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
 
         $song_id = $ins["id"];
         pg_query($conn, "insert into album_music (album_id, music_id) values('$id_album', '$song_id')" );
-
     }
-
-
-
 }
 
 
@@ -375,7 +363,7 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
             <!-- username -->
             <?php
 
-            print '<a href="ArtistPage.php"><h1>' . $user . '</h1></a>';
+            print '<h1>' . $user . '</h1>';
             ?>
         </div>
 

@@ -749,36 +749,43 @@ if(isset($_FILES['foto_genre_playlist']) && isset($_POST['songs_number']) && iss
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
 
-        <!--Playlists esq-->
-        <div class="foto_1"><a  href="Playlist.php"><img src="imagens/playlist%201.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_2"><a  href="Playlist.php"><img src="imagens/playlist%202.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_3"><a  href="Playlist.php"><img src="imagens/playlist%203.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_4"><a  href="Playlist.php"><img src="imagens/playlist%204.jpg" height="226" width="226" alt="img"></a></div>
-        <div class="foto_5"><a  href="Playlist.php"><img src="imagens/playlist%205.jpg" height="226" width="226" alt="img"></a></div>
-
-
-        <!--Texto Playlists esq-->
-        <div class="texto_foto_1">Pop </div>
-        <div class="texto_foto_2">#13</div>
-        <div class="texto_foto_3">Casa das...</div>
-        <div class="texto_foto_4">Studying</div>
-        <div class="texto_foto_5">Chill</div>
-
+        <!--Playlists-->
 
         <?php
 
-        $artist_name= pg_query($conn, "select user__username,foto from artist" );
-        $artist_name= pg_fetch_all($artist_name);
-        for ($i=0; $i<count($artist_name) && $i<5;$i++){
-            print '<div class="foto_' . strval(6 + $i) . '"><a  href="Artist.php?artist=' . $artist_name[$i]['user__username'] . '"><img src="' . $artist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+        $playlist= pg_query($conn, "select playlist_name,foto from playlist" );
+        $playlist= pg_fetch_all($playlist);
+        for ($i=0; $i<count($playlist) && $i<5; $i++){
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="Playlist.php?playlist=' . $playlist[$i]['playlist_name'] . '"><img src="' . $playlist[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
         }
 
         ?>
 
         <?php
 
-        for ($i=0; $i<count($artist_name)&& $i<5;$i++){
-            print '<div class="texto_foto_' . strval(6 + $i) . '">' . $artist_name[$i]['user__username'] . '</div>';
+        for ($i=0; $i<count($playlist)&& $i<5; $i++){
+            print '<div style="text-transform: capitalize;" class="texto_foto_' . strval(1 + $i) . '">' . $playlist[$i]['playlist_name'] . '</div>';
+        }
+
+        ?>
+
+
+        <!--Artistas-->
+
+        <?php
+
+        $playlist= pg_query($conn, "select user__username,foto from artist" );
+        $playlist= pg_fetch_all($playlist);
+        for ($i=0; $i<count($playlist) && $i<5; $i++){
+            print '<div class="foto_' . strval(6 + $i) . '"><a  href="Artist.php?artist=' . $playlist[$i]['user__username'] . '"><img src="' . $playlist[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+        }
+
+        ?>
+
+        <?php
+
+        for ($i=0; $i<count($playlist)&& $i<5; $i++){
+            print '<div class="texto_foto_' . strval(6 + $i) . '">' . $playlist[$i]['user__username'] . '</div>';
         }
 
         ?>
@@ -789,7 +796,7 @@ if(isset($_FILES['foto_genre_playlist']) && isset($_POST['songs_number']) && iss
 
         <!--Botões-->
         <div class="mais"><img src="Icones%20Rockstar%20Inc/Homepage/add%20playlist.png" height="124" width="auto" alt="img"></div>
-        <div class="see_all"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
+        <div class="see_all"><a href="AllPlaylists.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
         <div class="see_more"><a href="AllArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>
 
         <div class="contPopup">

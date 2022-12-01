@@ -242,7 +242,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <!-- username -->
             <?php
 
-            print '<a href="ArtistPage.php"><h1>' . $user . '</h1></a>';
+            print '<h1>' . $user . '</h1>';
             ?>
         </div>
 

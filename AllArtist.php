@@ -112,15 +112,9 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
                 print '<div class="foto"><a  href="Artist.php?artist=' . $artist_name[$i]['user__username'] . '"><img src="' . $artist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
             }
 
-            ?>
-
-            <?php
-
             for ($i=0; $i<count($artist_name);$i++){
                 print '<h4 class="texto_foto" >' . $artist_name[$i]['user__username'] . '</h4>';
             }
-
-
 
             ?>
 

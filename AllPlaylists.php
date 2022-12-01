@@ -18,7 +18,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 <head>
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>All Artists - Rockstar</title>
+    <title>All Playlists - Rockstar</title>
 
     <style>
 
@@ -38,6 +38,22 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             font-size: 12px;
         }
 
+        #asc{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 0px;
+            top: -10px;
+        }
+
+        #desc{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 50px;
+            top: -10px;
+        }
+
     </style>
 </head>
 
@@ -55,7 +71,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         </div>
 
         <div >
-            <h4 id="ident">Artist</h4>
+            <h4 id="ident">Listener</h4>
         </div>
 
         <div id="logout">
@@ -66,7 +82,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
     <div id="headerR">
         <!-- home -->
-        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
+        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
 
         <!-- search -->
         <div id="search">
@@ -83,24 +99,31 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
             <?php
 
-            $album_name= pg_query($conn, "select album_name,foto from album where artist_user__username= '$user'" );
-            $album_name= pg_fetch_all($album_name);
-            for ($i=0; $i<count($album_name); $i++){
-                print '<div class="foto"><a  href="AlbumArtist.php?album=' . $album_name[$i]['album_name'] . '"><img src="' . $album_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+
+            if(isset($_GET["inverse"]) && $_GET["inverse"] == 1) {
+                $playlist_name= pg_query($conn, "select playlist_name,foto from playlist where client_user__username='$user' order by playlist_name desc");
+            }
+            else {
+                $playlist_name= pg_query($conn, "select playlist_name,foto from playlist where client_user__username='$user' order by playlist_name asc" );
             }
 
-            ?>
+            $playlist_name= pg_fetch_all($playlist_name);
+            for ($i=0; $i<count($playlist_name); $i++){
+                print '<div class="foto"><a  href="Artist.php?artist=' . $playlist_name[$i]['playlist_name'] . '"><img src="' . $playlist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+            }
 
-            <?php
-
-            for ($i=0; $i<count($album_name); $i++){
-                print '<h4 class="texto_foto" >' . $album_name[$i]['album_name'] . '</h4>';
+            for ($i=0; $i<count($playlist_name); $i++){
+                print '<h4 class="texto_foto" >' . $playlist_name[$i]['playlist_name'] . '</h4>';
             }
 
             ?>
 
         </div>
     </section>
+
+    <button type="button" value="A-Z" id="asc" ><a href="AllArtist.php">A-Z</a></button>
+    <button type="button" value="Z-A" id="desc"><a href="?inverse=1">Z-A</a></button>
+
 
 </main>
 
@@ -131,4 +154,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     </div>
 </footer>
 </body>
+
+
 </html>

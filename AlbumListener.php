@@ -7,6 +7,8 @@ $user= $_SESSION['nome'];
 $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
 $conn= pg_connect($str) or die ("Erro na ligacao");
 
+$album_name= $_GET['album'];
+
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +17,11 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
     <link rel="shortcut icon" type="img/png" href="Icones%20Rockstar%20Inc/header%20login%20e%20register/icon%20logo.png">
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Album - Rockstar</title>
+    <?php
 
+    print '<title>' . $album_name . ' - Rockstar</title>';
+
+    ?>
     <style>
 
         .container{
@@ -452,12 +457,15 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <main>
     <div class="container">
+
         <div class="caixa_esq" ></div>
         <div class="caixa_dir" ></div>
+
+        <!--Títulos-->
+
+        <div class="songs"><img src="Icones%20Rockstar%20Inc/album/songs.png" height="auto" width="279" alt="img"></div>
+
         <?php
-
-
-        $album_name= $_GET['album'];
 
         print '<h1>' . $album_name . '</h1>';
 
@@ -479,11 +487,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 
         ?>
-
-        <!--Títulos-->
-
-        <div class="songs"><img src="Icones%20Rockstar%20Inc/album/songs.png" height="auto" width="279" alt="img"></div>
-
     </div>
 </main>
 
