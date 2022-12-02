@@ -528,9 +528,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <!--Botoes de filtro-->
 
-        <div class="artist"><img src="Icones%20Rockstar%20Inc/search/botao%20artist.png" height="auto" width="142" alt="img"></div>
-        <div class="song"><img src="Icones%20Rockstar%20Inc/search/botao%20song.png" height="auto" width="142" alt="img"></div>
-        <div class="album"><img src="Icones%20Rockstar%20Inc/search/botao%20album.png" height="auto" width="142" alt="img"></div>
+        <button type="button" value="Z-A" id="desc"><a href="?inverse=1">Z-A</a></button>
+
+        <button class="artist" type="button"><img src="Icones%20Rockstar%20Inc/search/botao%20artist.png" height="auto" width="142" alt="img"></button>
+        <button class="song"><img src="Icones%20Rockstar%20Inc/search/botao%20song.png" height="auto" width="142" alt="img"></button>
 
     </div>
 </main>
