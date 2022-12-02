@@ -475,8 +475,13 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <!-- search -->
         <div id="search">
-            <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+            <form id="search" method="post" action="" enctype="multipart/form-data">
+
+                <input class="searchbar" name="search" type="text" placeholder="search here">
+                <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+
+            </form>
+
         </div>
     </div>
 </header>

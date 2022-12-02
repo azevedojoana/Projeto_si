@@ -1,8 +1,5 @@
 <?php
 
-require_once 'funcoes-bd.php';
-
-
 session_start();
 
 $user= $_SESSION['nome'];
