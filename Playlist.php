@@ -7,9 +7,20 @@ $user= $_SESSION['nome'];
 $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
 $conn= pg_connect($str) or die ("Erro na ligacao");
 
-$playlist_name= $_GET['playlist'];
+$playlist_id= $_GET['playlist'];
 
-print '<title>' . $playlist_name . ' - Rockstar</title>';
+$playlist= pg_query($conn, "select foto, playlist_name from playlist where id='$playlist_id'" );
+$playlist= pg_fetch_array($playlist);
+
+print '<title>' . $playlist["playlist_name"] . ' - Rockstar</title>';
+
+
+if(isset($_POST["delete"])) {
+    pg_query($conn, "delete from playlist_music where playlist_id='$playlist_id'" );
+    pg_query($conn, "delete from playlist where id='$playlist_id'" );
+
+    header("Location: Homepage.php");
+}
 
 ?>
 
@@ -19,7 +30,7 @@ print '<title>' . $playlist_name . ' - Rockstar</title>';
 <head>
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Playlist - Rockstar</title>
+
 
     <style>
 
@@ -478,11 +489,9 @@ print '<title>' . $playlist_name . ' - Rockstar</title>';
 
         print '<h2>' . $user . '</h2>';
 
-        print '<h1 style="text-transform: capitalize;">' . $playlist_name . '</h1>';
 
-        $playlist= pg_query($conn, "select foto, id from playlist where playlist_name='$playlist_name'" );
-        $playlist= pg_fetch_array($playlist);
-        $playlist_id = $playlist["id"];
+        print '<h1 style="text-transform: capitalize;">' . $playlist["playlist_name"]  . '</h1>';
+
 
         print '<div class="foto_perfil"><img src="' . $playlist['foto'] . '" height="441" width="auto" alt="img"></div>';
 
@@ -500,6 +509,11 @@ print '<title>' . $playlist_name . ' - Rockstar</title>';
         <!--Títulos-->
 
         <div class="playlist"><img src="Icones%20Rockstar%20Inc/playlist/playlist.png" height="auto" width="302" alt="img"></div>
+
+        <form id="delete_playlist" method="post" action="" enctype="multipart/form-data">
+
+            <button class="delete" type="submit" name="delete">Delete Playlist</button>
+        </form>
 
     </div>
 </main>

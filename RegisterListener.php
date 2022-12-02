@@ -1,9 +1,5 @@
 <?php
 
-session_start();
-
-$user= $_SESSION['nome'];
-
 $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
 $conn= pg_connect($str) or die ("Erro na ligacao");
 

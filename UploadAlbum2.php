@@ -339,9 +339,9 @@ if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['s
     $target_dir = "musicas/";
     $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
     $target_file = $target_dir . $song_name . $user . "." . $musicFileType;
-    $tmp = $_FILES["song"]["name"];
+    $var = move_uploaded_file($_FILES["song"]["tmp_name"], $target_file);
 
-    if (!move_uploaded_file($_FILES["song"]["tmp_name"], $target_file)) {
+    if (!$var) {
         echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
     }
     else{

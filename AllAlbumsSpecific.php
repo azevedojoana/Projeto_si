@@ -84,10 +84,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <?php
             $artista= $_GET['artist'];
 
-            $album_name= pg_query($conn, "select album_name,foto from album where artist_user__username= '$user'" );
+            $album_name= pg_query($conn, "select album_name,foto, id from album where artist_user__username= '$user'" );
             $album_name= pg_fetch_all($album_name);
             for ($i=0; $i<count($album_name); $i++){
-                print '<div class="foto"><a  href="Artist.php?artist=' . $album_name[$i]['album_name'] . '"><img src="' . $album_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+                print '<div class="foto"><a  href="Artist.php?artist=' . strval($album_name[$i]['id']) . '"><img src="' . $album_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
             }
 
             ?>

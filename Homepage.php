@@ -753,10 +753,10 @@ if(isset($_FILES['foto_genre_playlist']) && isset($_POST['songs_number']) && iss
 
         <?php
 
-        $playlist= pg_query($conn, "select playlist_name,foto from playlist" );
+        $playlist= pg_query($conn, "select playlist_name,foto, id from playlist" );
         $playlist= pg_fetch_all($playlist);
         for ($i=0; $i<count($playlist) && $i<5; $i++){
-            print '<div class="foto_' . strval(1 + $i) . '"><a  href="Playlist.php?playlist=' . $playlist[$i]['playlist_name'] . '"><img src="' . $playlist[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="Playlist.php?playlist=' . strval($playlist[$i]['id']) . '"><img src="' . $playlist[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
         }
 
         ?>

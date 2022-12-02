@@ -7,7 +7,10 @@ $user= $_SESSION['nome'];
 $str = "dbname=rockstar user=postgres  password=postgres host=localhost port=5432";
 $conn= pg_connect($str) or die ("Erro na ligacao");
 
-$album_name= $_GET['album'];
+$album_id= $_GET['album'];
+
+$album= pg_query($conn, "select foto, id, album_name from album where id='$album_id'" );
+$album= pg_fetch_array($album);
 
 ?>
 
@@ -19,7 +22,7 @@ $album_name= $_GET['album'];
     <meta charset="UTF-8">
     <?php
 
-    print '<title>' . $album_name . ' - Rockstar</title>';
+    print '<title>' . $album["album_name"] . ' - Rockstar</title>';
 
     ?>
 
@@ -463,12 +466,8 @@ $album_name= $_GET['album'];
         <div class="caixa_dir" ></div>
         <?php
 
-        print '<h1>' . $album_name . '</h1>';
+        print '<h1>' . $album["album_name"] . '</h1>';
         print '<h2>' . $user . '</h2>';
-
-        $album= pg_query($conn, "select foto, id from album where album_name='$album_name'" );
-        $album= pg_fetch_array($album);
-        $album_id = $album["id"];
 
         print '<div class="foto_perfil"><img src="' . $album['foto'] . '" height="441" width="auto" alt="img"></div>';
 

@@ -705,10 +705,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
         <?php
 
-        $album= pg_query($conn, "select album_name,foto from album where artist_user__username='$artista'" );
+        $album= pg_query($conn, "select album_name,foto, id from album where artist_user__username='$artista'" );
         $album= pg_fetch_all($album);
         for ($i=0; $i<count($album) && $i<5;$i++){
-            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumListener.php?album=' . $album[$i]['album_name'] . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumListener.php?album=' . strval($album[$i]['id']) . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
 
         }
 

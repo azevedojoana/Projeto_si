@@ -811,10 +811,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         print '<div class="foto_perfil"><img src="' . $foto['foto'] . '" height="193" width="193" alt="img"></div>';
 
 
-        $album= pg_query($conn, "select album_name,foto from album where artist_user__username='$user'" );
+        $album= pg_query($conn, "select album_name,foto, id from album where artist_user__username='$user'" );
         $album= pg_fetch_all($album);
         for ($i=0; $i<count($album) && $i<5;$i++){
-            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumArtist.php?album=' . $album[$i]['album_name'] . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
+            print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumArtist.php?album=' . strval($album[$i]['id']) . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
         }
 
 
@@ -826,9 +826,10 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         $song= pg_fetch_all($song);
 
         for ($i=0; $i<count($song) && $i<9;$i++){
-            print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
-            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
-            print '<audio class="aud_' . strval(1 + $i) . '" controls>
+
+            print '<div style="top: 309 ' . strval(65 * $i) . 'px;" class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
+            print '<div style="top: 309 ' . strval(65 * $i) . 'px;" class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+            print '<audio style="top: 309 ' . strval(65 * $i) . 'px;"class="aud_' . strval(1 + $i) . '" controls>
                        <source src="' . $song[$i]['file'] . '" type="audio/mpeg">
                        Your browser does not support the audio element.
                    </audio>';
@@ -850,6 +851,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <div class="see_all"><a href="AllSongsArtist.php"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>
 
     </div>
+
 </main>
 <footer>
     <div class="foter">

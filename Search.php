@@ -478,7 +478,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             <form id="search" method="post" action="" enctype="multipart/form-data">
 
                 <input class="searchbar" name="search" type="text" placeholder="search here">
-                <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
+                <button class="button" type="submit" ><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></button>
 
             </form>
 
@@ -488,50 +488,52 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <main>
     <div class="container">
-        <div class="caixa_esq" ></div>
-        <h1>Cherry Glazerr</h1>
-        <div class="foto_perfil"><img src="imagens/profile-%20cherry_glazerr.jpg" height="193" width="193" alt="img"></div>
+        <?php
 
-        <!--Musicas-->
 
-        <div class="ret_1"></div>
-        <div class="ret_2"></div>
-        <div class="ret_3"></div>
-        <div class="ret_4"></div>
-        <div class="ret_5"></div>
-        <div class="ret_6"></div>
-        <div class="ret_7"></div>
+        if(isset($_POST['search'])) {
+            $search = $_POST['search'];
+            print '<h2>Results for: ' . $search . '</h2>';
 
-        <!--Texto Musicas-->
+            if(isset($_GET["filter"]) && $_GET["filter"] == 1) {
+                $result = pg_query($conn, "select song_name, file from music where LOWER(artist_user__username) like LOWER('%$search%')");
+                $result = pg_fetch_all($result);
 
-        <div class="texto_ret_1">Come Back Around - Moon Boots, ...</div>
-        <div class="texto_ret_2">My Friend of Misery - Cherry Glazerr</div>
-        <div class="texto_ret_3">Soft Drink - Cherry Glazerr</div>
-        <div class="texto_ret_4">Big Bang - Cherry Glazerr</div>
-        <div class="texto_ret_5">Rabbit Hole - Cherry Glazerr</div>
-        <div class="texto_ret_6">Call Me (feat. Portugal. The Man)...</div>
-        <div class="texto_ret_7">Daddy (Reggie Watts Remix) - ...</div>
+                for ($i = 0; $i < count($result); $i++) {
+                    print '<div class="ret_' . strval(1 + $i) . '">' . $result[$i]['song_name'] . '</div>';
+                    print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+                    print '<audio class="aud_' . strval(1 + $i) . '" controls>
+                           <source src="' . $result[$i]['file'] . '" type="audio/mpeg">
+                           Your browser does not support the audio element.
+                       </audio>';
+                }
+            }
 
-        <!--Três pontinhos-->
+            else {
+                $result = pg_query($conn, "select song_name, file from music where LOWER(song_name) like LOWER('%$search%')");
+                $result = pg_fetch_all($result);
 
-        <div class="pont_1"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_2"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_3"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_4"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_5"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_6"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
-        <div class="pont_7"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>
+                for ($i = 0; $i < count($result); $i++) {
+                    print '<div class="ret_' . strval(1 + $i) . '">' . $result[$i]['song_name'] . '</div>';
+                    print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+                    print '<audio class="aud_' . strval(1 + $i) . '" controls>
+                           <source src="' . $result[$i]['file'] . '" type="audio/mpeg">
+                           Your browser does not support the audio element.
+                       </audio>';
+                }
+            }
+
+        }
+
+        ?>
 
         <!--Texto-->
-        <h2>Results for: Cherry Glazerr</h2>
         <h3>Sort by:</h3>
 
         <!--Botoes de filtro-->
 
-        <button type="button" value="Z-A" id="desc"><a href="?inverse=1">Z-A</a></button>
-
-        <button class="artist" type="button"><img src="Icones%20Rockstar%20Inc/search/botao%20artist.png" height="auto" width="142" alt="img"></button>
-        <button class="song"><img src="Icones%20Rockstar%20Inc/search/botao%20song.png" height="auto" width="142" alt="img"></button>
+        <button class="artist" type="button"><a href="?filter=1"><img src="Icones%20Rockstar%20Inc/search/botao%20artist.png" height="auto" width="142" alt="img"></a></button>
+        <button class="song" type="button"><a href="Search.php"><img src="Icones%20Rockstar%20Inc/search/botao%20song.png" height="auto" width="142" alt="img"></a></button>
 
     </div>
 </main>

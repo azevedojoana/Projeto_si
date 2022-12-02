@@ -101,15 +101,15 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 
             if(isset($_GET["inverse"]) && $_GET["inverse"] == 1) {
-                $playlist_name= pg_query($conn, "select playlist_name,foto from playlist where client_user__username='$user' order by playlist_name desc");
+                $playlist_name= pg_query($conn, "select playlist_name,foto, id from playlist where client_user__username='$user' order by playlist_name desc");
             }
             else {
-                $playlist_name= pg_query($conn, "select playlist_name,foto from playlist where client_user__username='$user' order by playlist_name asc" );
+                $playlist_name= pg_query($conn, "select playlist_name,foto, id from playlist where client_user__username='$user' order by playlist_name asc" );
             }
 
             $playlist_name= pg_fetch_all($playlist_name);
             for ($i=0; $i<count($playlist_name); $i++){
-                print '<div class="foto"><a  href="Artist.php?artist=' . $playlist_name[$i]['playlist_name'] . '"><img src="' . $playlist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
+                print '<div class="foto"><a  href="Playlist.php?playlist=' . strval($playlist_name[$i]['id']) . '"><img src="' . $playlist_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
             }
 
             for ($i=0; $i<count($playlist_name); $i++){
