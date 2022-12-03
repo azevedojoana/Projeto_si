@@ -9,6 +9,7 @@ $user= $_SESSION['nome'];
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" type="img/png" href="Icones%20Rockstar%20Inc/header%20login%20e%20register/icon%20logo.png">
     <link href="CSS/login.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Register - Rockstar</title>

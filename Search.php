@@ -12,6 +12,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" type="img/png" href="Icones%20Rockstar%20Inc/header%20login%20e%20register/icon%20logo.png">
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Results - Rockstar</title>
@@ -501,7 +502,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
                 for ($i = 0; $i < count($result); $i++) {
                     print '<div class="ret_' . strval(1 + $i) . '">' . $result[$i]['song_name'] . '</div>';
-                    print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
                     print '<audio class="aud_' . strval(1 + $i) . '" controls>
                            <source src="' . $result[$i]['file'] . '" type="audio/mpeg">
                            Your browser does not support the audio element.
@@ -515,7 +515,6 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
                 for ($i = 0; $i < count($result); $i++) {
                     print '<div class="ret_' . strval(1 + $i) . '">' . $result[$i]['song_name'] . '</div>';
-                    print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
                     print '<audio class="aud_' . strval(1 + $i) . '" controls>
                            <source src="' . $result[$i]['file'] . '" type="audio/mpeg">
                            Your browser does not support the audio element.

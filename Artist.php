@@ -12,6 +12,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" type="img/png" href="Icones%20Rockstar%20Inc/header%20login%20e%20register/icon%20logo.png">
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Artist - Rockstar</title>
@@ -696,7 +697,7 @@ require_once 'HeaderListener.php';
 
         $album= pg_query($conn, "select album_name,foto, id from album where artist_user__username='$artista'" );
         $album= pg_fetch_all($album);
-        for ($i=0; $i<count($album) && $i<5;$i++){
+        for ($i=0; $i<count($album) && $i<4;$i++){
             print '<div class="foto_' . strval(1 + $i) . '"><a  href="AlbumListener.php?album=' . strval($album[$i]['id']) . '"><img src="' . $album[$i]['foto'] . '" height="216" width="216" alt="img"></a></div>';
 
         }
@@ -705,11 +706,11 @@ require_once 'HeaderListener.php';
 
         <?php
 
-        for ($i=0; $i<count($album) && $i<5;$i++){
+        for ($i=0; $i<count($album) && $i<4;$i++){
             print '<div class="texto_foto_' . strval(1 + $i) . '">' . $album[$i]['album_name'] . '</div>';
         }
 
-        $song= pg_query($conn, "select song_name from music where single='true' and artist_user__username='$artista'" );
+        $song= pg_query($conn, "select song_name,file from music where single='true' and artist_user__username='$artista'" );
 
 
         //   print pg_affected_rows($song);
@@ -717,9 +718,12 @@ require_once 'HeaderListener.php';
         //   exit();
         $song= pg_fetch_all($song);
 
-        for ($i=0; $i<count($song) && $i<9;$i++){
+        for ($i=0; $i<count($song) && $i<8;$i++){
             print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
-            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+            print '<audio style="scale: 70%;position: absolute;left: 1470px;top: 260 ' . strval(65 * $i) . 'px;"class="pont_' . strval(1 + $i) . '" controls>
+                       <source src="' . $song[$i]['file'] . '" type="audio/mpeg">
+                       Your browser does not support the audio element.
+                   </audio>';
         }
         ?>
 

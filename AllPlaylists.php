@@ -16,6 +16,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" type="img/png" href="Icones%20Rockstar%20Inc/header%20login%20e%20register/icon%20logo.png">
     <link href="CSS/geral.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>All Playlists - Rockstar</title>

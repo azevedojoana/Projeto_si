@@ -450,13 +450,16 @@ require_once 'HeaderArtist.php';
 
         print '<div class="foto_perfil"><img src="' . $album['foto'] . '" height="441" width="auto" alt="img"></div>';
 
-        $song= pg_query($conn, "select music_id,song_name from album_music,music where album_id=$album_id and  id=music_id" );
+        $song= pg_query($conn, "select music_id,song_name,file from album_music,music where album_id=$album_id and  id=music_id" );
         $song= pg_fetch_all($song);
 
         for ($i=0; $i<count($song); $i++){
 
             print '<div class="ret_' . strval(1 + $i) . '">' . $song[$i]['song_name'] . '</div>';
-            print '<div class="pont_' . strval(1 + $i) . '"><img src="Icones%20Rockstar%20Inc/comuns%20a%20várias/3%20bolinhas.png" height="25" width="6" alt="img"></div>';
+            print '<audio style="scale: 70%;position: absolute;left: 1470px;"class="pont_' . strval(1 + $i) . '" controls>
+                       <source src="' . $song[$i]['file'] . '" type="audio/mpeg">
+                       Your browser does not support the audio element.
+                   </audio>';
         }
 
         ?>
