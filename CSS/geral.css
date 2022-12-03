@@ -211,13 +211,10 @@ p{
 }
 
 #logo{
-    display:flex;
-    justify-content: flex-end;
     height:8vh;
-    width:30vw;
 }
 
 .space{
-    width:10vw;
+    width:1.5vw;
 }
 

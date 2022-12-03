@@ -30,12 +30,19 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         }
 
         .fots{
+            display: flex;
             margin-top: 5%;
-            display: grid;
-            grid-template-columns:1fr 1fr 1fr 1fr 1fr;
             font-family: Arial, Helvetica, sans-serif;
             text-align: center;
             font-size: 12px;
+        }
+
+        .ret{
+            box-sizing: border-box;
+
+            background: #5C714F;
+            border: 4px solid #FFFFFF;
+            border-radius: 16px;
         }
 
     </style>
@@ -45,7 +52,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <?php
 
-require_once 'HeaderArtist.php';
+require_once 'HeaderListener.php';
 
 ?>
 
@@ -55,19 +62,13 @@ require_once 'HeaderArtist.php';
         <div class="fots">
 
             <?php
+            $artista= $_GET['artista'];
 
-            $album_name= pg_query($conn, "select album_name,foto, id from album where artist_user__username= '$user'" );
-            $album_name= pg_fetch_all($album_name);
-            for ($i=0; $i<count($album_name); $i++){
-                print '<div class="foto"><a  href="AlbumArtist.php?album=' . strval($album_name[$i]['id']) . '"><img src="' . $album_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';
-            }
+            $song_name= pg_query($conn, "select song_name from music where single='true' and artist_user__username='$artista'" );
+            $song_name= pg_fetch_all($song_name);
 
-            ?>
-
-            <?php
-
-            for ($i=0; $i<count($album_name); $i++){
-                print '<h4 class="texto_foto" >' . $album_name[$i]['album_name'] . '</h4>';
+            for ($i=0; $i<count($song_name); $i++){
+                print '<h4 class="ret" >' . $song_name[$i]['song_name'] . '</h4>';
             }
 
             ?>

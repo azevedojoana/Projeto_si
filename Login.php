@@ -72,10 +72,11 @@
 <body>
 
 
-<header>
-    <!-- Logo -->
-    <img id=logo src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
-</header>
+<?php
+
+require_once 'HeaderLogin.php';
+
+?>
 
 <main>
     <div class="container">

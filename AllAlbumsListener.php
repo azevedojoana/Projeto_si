@@ -45,7 +45,7 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 <?php
 
-require_once 'HeaderArtist.php';
+require_once 'HeaderListener.php';
 
 ?>
 
@@ -56,7 +56,9 @@ require_once 'HeaderArtist.php';
 
             <?php
 
-            $album_name= pg_query($conn, "select album_name,foto, id from album where artist_user__username= '$user'" );
+            $artista= $_GET['artista'];
+
+            $album_name= pg_query($conn, "select album_name,foto, id from album where artist_user__username= '$artista'" );
             $album_name= pg_fetch_all($album_name);
             for ($i=0; $i<count($album_name); $i++){
                 print '<div class="foto"><a  href="AlbumArtist.php?album=' . strval($album_name[$i]['id']) . '"><img src="' . $album_name[$i]['foto'] . '" height="226" width="226" alt="img"></a></div>';

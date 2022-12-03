@@ -164,56 +164,33 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
 
 </head>
 <body>
-<header>
-    <div id="headerL">
-        <div id="user">
-            <!-- username -->
-            <?php
 
-            print '<h1>' . $user . '</h1>';
+<?php
 
-            if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['song'])) {
+if(isset($_POST['song_name']) && isset($_POST['song_genre']) && isset($_FILES['song'])) {
 
-                $song_name= $_POST['song_name'];
-                $song_genre= $_POST['song_genre'];
+    $song_name= $_POST['song_name'];
+    $song_genre= $_POST['song_genre'];
 
-                $target_dir = "musicas/";
-                $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
-                $target_file = $target_dir . $song_name . $user . "." . $musicFileType;
-                $tmp = $_FILES["song"]["name"];
+    $target_dir = "musicas/";
+    $musicFileType = strtolower(pathinfo($_FILES['song']['name'],PATHINFO_EXTENSION));
+    $target_file = $target_dir . $song_name . $user . "." . $musicFileType;
+    $tmp = $_FILES["song"]["name"];
 
-                if (!move_uploaded_file($_FILES["song"]["tmp_name"], $target_file)) {
-                    echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
-                }
-                else{
-                    pg_query($conn, "insert into music (song_name, file, genre_genre_name,single,artist_user__username) values('$song_name', '$target_file','$song_genre','true','$user')" );
-                }
-            }
+    if (!move_uploaded_file($_FILES["song"]["tmp_name"], $target_file)) {
+        echo "<script> alert('Sorry, there was an error uploading your file.') </script>";
+    }
+    else{
+        pg_query($conn, "insert into music (song_name, file, genre_genre_name,single,artist_user__username) values('$song_name', '$target_file','$song_genre','true','$user')" );
+    }
+}
 
-            ?>
-        </div>
+?>
+<?php
 
-        <div >
-            <h4 id="ident">Listener</h4>
-        </div>
+require_once 'HeaderArtist.php';
 
-        <div id="logout">
-            <!-- logout -->
-            <a  href="Logout.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
-            </a>
-        </div>
-    </div>
-    <div id="headerR">
-        <!-- home -->
-        <a id="home" href="ArtistPage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
-
-        <!-- search -->
-        <div id="search">
-            <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
-        </div>
-    </div>
-</header>
+?>
 <main>
     <div class="container">
 

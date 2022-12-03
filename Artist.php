@@ -647,43 +647,32 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
             color: #EAE4E1;
         }
 
+        .see_more{
+            position: absolute;
+            width: 197px;
+            height: 64px;
+            left: 875px;
+            top: 450px;
+        }
+
+        .see_all{
+            position: absolute;
+            width: 179px;
+            height: 58px;
+            left: 1467px;
+            top: 850px;
+        }
+
     </style>
 
 </head>
 
 <body>
-<header>
-    <div id="headerL">
-        <div id="user">
-            <!-- username -->
-            <?php
+<?php
 
-            print '<h4>' . $user . '</h4>';
+require_once 'HeaderListener.php';
 
-            ?>
-        </div>
-
-        <div >
-            <h4 id="ident">Listener</h4>
-        </div>
-
-        <div id="logout">
-            <!-- logout -->
-            <a  href="Logout.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/icon%20logout%20header.png" height="30" width="auto">
-            </a>
-        </div>
-    </div>
-    <div id="headerR">
-        <!-- home -->
-        <a id="home" href="Homepage.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/homepage.png" height="30" width="auto"></a>
-
-        <!-- search -->
-        <div id="search">
-            <input class="searchbar" name="email" type="email" placeholder="search here">
-            <button class="button" type="submit" ><a href="Search.php"><img src="Icones%20Rockstar%20Inc/header%20resto%20das%20paginas/search%20header.png" height="18" width="auto"></a></button>
-        </div>
-    </div>
-</header>
+?>
 <main>
     <div class="container">
 
@@ -740,34 +729,18 @@ $conn= pg_connect($str) or die ("Erro na ligacao");
         <div class="songs"><img src="Icones%20Rockstar%20Inc/artist/singles.png" height="auto" width="304" alt="img"></div>
 
     </div>
+
+    <?php
+        print ' <div class="see_more"><a href="AllAlbumsListener.php?artista=' . $artista . '"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20more.png" height="auto" width="197" alt="img"></a></div>';
+        print '<div class="see_all"><a href="AllSongsListener.php?artista=' . $artista . '"><img src="Icones%20Rockstar%20Inc/Homepage/botao%20see%20all.png" height="auto" width="179" alt="img"></a></div>';
+    ?>
 </main>
 
-<footer>
-    <div class="foter">
-        <div id="musica">
-            <p class="tipo2">Nome musica</p>
-            <p class="tipo3">Nome artista</p>
-        </div>
+<?php
 
-        <div class="space"></div>
+require_once 'Footer.php';
 
-        <!-- botoes play -->
-        <div class="botoes">
-            <a class="play_left"><img src="Icones%20Rockstar%20Inc/footer/botao%20left%20play.png" height="30" width="auto"></a>
-            <a class="play" ><img src="Icones%20Rockstar%20Inc/footer/play.png" height="50" width="auto"></a>
-            <a class="play_right" ><img src="Icones%20Rockstar%20Inc/footer/botao%20right%20play.png" height="30" width="auto"></a>
-        </div>
-
-        <div class="space"></div>
-
-        <div id=logo >
-            <!-- Logo -->
-            <a href="Home.php">
-                <img src="Icones%20Rockstar%20Inc/footer/logo%20com%20texto%20footer.png" height="60" width="auto"/>
-            </a>
-        </div>
-    </div>
-</footer>
+?>
 
 </body>
 </html>
